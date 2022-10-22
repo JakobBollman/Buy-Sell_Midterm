@@ -49,7 +49,7 @@ app.use('/listings', listingsRoutes);
 
 app.get('/', (req, res) => {
   // to be replaced with redirect to listings.ejs (JB working on)
-  res.render('index');
+  res.render('listings');
 });
 
 app.listen(PORT, () => {

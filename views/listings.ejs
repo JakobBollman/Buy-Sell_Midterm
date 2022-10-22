@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=PT Sans Narrow' rel='stylesheet'>
+
+    <!-- CSS CALLS -->
+    <link rel="stylesheet" href="../styles/listings_body.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/search.css" type="text/css" />
+
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+
+    <main class="container">
+
+      <section class="search_listings">
+        <form id="search">
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          <textarea name="text" id="search-text" placeholder="Search..."></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <section class="item_body">
+        <section>
+          <header>Featured Items</header>
+          <label class="desc">The Hottest New Items From Around The Village!</label>
+          <div class="featured_items">
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Crate of Rotten Tomatoes</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section>
+          <header>All Items</header>
+          <label class="desc">Find Items Sold By People Near You!</label>
+          <div class="featured_items">
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="images/Torch A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Crate of Rotten Tomatoes</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </section>
+
+    </main>
+  </body>
+</html>

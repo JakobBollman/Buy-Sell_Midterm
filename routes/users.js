@@ -14,20 +14,18 @@ router.get('/', (req, res) => {
   res.render('users');
 });
 
-// GET to /users/login
+// GET /users/login
 router.get('/login', (req, res) => {
-  // Placeholder
-  res.send('admin you are');
-  // Set admin user cookies (MAKE THIS USER ID?)
+  // Set admin user cookies (MAKE THIS users.id?)
   req.session.user_id = 'admin';
+  res.redirect('/listings');
 });
 
-// GET to /users/register
+// GET /users/register
 router.get('/register', (req, res) => {
-  // Placeholder
-  res.send('regular user you are');
-  // Set regular user cookies (MAKE THIS USER ID?)
-  req.session.user_id = 'user'
+  // Set regular user cookies (MAKE THIS users.id?)
+  req.session.user_id = 'user';
+  res.redirect('/listings');
 });
 
 

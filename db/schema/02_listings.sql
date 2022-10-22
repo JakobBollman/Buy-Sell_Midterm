@@ -5,5 +5,5 @@ CREATE TABLE listings (
   title VARCHAR(255) NOT NULL,
   description TEXT,
   price INTEGER NOT NULL,
-  status VARCAHR(10) DEFAULT 'active',
+  status VARCHAR(10) DEFAULT 'active'
 );

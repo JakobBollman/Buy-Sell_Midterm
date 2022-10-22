@@ -11,6 +11,9 @@ VALUES
 ('Farmer Joe', 'tegridy@farm.com', 'password', true, '1854-08-13T07:00:00.000Z'),
 ('Farmer Sally', 'betterthanJoe@fake.com', 'password', true, '1854-08-13T07:00:00.000Z'),
 ('Farmhand Larry', 'larry@joesfarm.com', 'password', false, '1854-07-13T07:00:00.000Z'),
-('Blacksmith Bob', 'metal@bob.com', 'password', true, '1854-03-13T07:00:00.000Z')
+('Blacksmith Bob', 'metal@bob.com', 'password', true, '1854-03-13T07:00:00.000Z'),
+('Innkeeper Amy', 'amy@villageinn.com', 'password', false, '1854-05-20T07:00:00.000Z'),
+('Chef Margaret', 'jacob@villageinn.com', 'password', false, '1854-05-13T07:00:00.000Z'),
+('Mayor2', 'notthemayor@village.com', 'password', false, '1853-08-13T07:00:00.000Z')
 ;
 

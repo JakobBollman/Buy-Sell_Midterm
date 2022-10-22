@@ -1,0 +1,104 @@
+main.container {
+  display: flex;
+  height:auto;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  flex-direction: column;
+  background-color: rgb(200,200,200);
+}
+
+section.item_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+section.item_body section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 3px solid black;
+  margin-top: 50px;
+}
+
+section.item_body i {
+  display: flex;
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+section.item_body i:hover {
+  display: flex;
+  color: rgb(200,200,200);
+}
+
+section.item_body header {
+  display: flex;
+  font-size: 64px;
+  font-family: 'Yellowtail','PT Sans Narrow';
+  margin-top: 0.5em;
+}
+
+section.item_body label.desc {
+  display: flex;
+  font-size: 16px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-bottom: 1em;
+}
+
+section.item_body div.featured_items {
+  display: flex;
+  width: 80vw;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+section.item_body div.listing {
+  display: flex;
+  position: relative;
+  height: 400px;
+  width: 300px;
+  border: 1px solid black;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.item_body div.listing:hover {
+  box-shadow: 10px 10px 8px #888888;
+}
+
+section.item_body img {
+  display: flex;
+  height: 350px;
+  width: 300px;
+  border: px solid black;
+}
+
+section.item_body div.item_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+section.item_body label.name {
+  display: flex;
+  font-size: 20px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-right: 1em;
+}
+
+section.item_body label.cost {
+  display: flex;
+  font-size: 12px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+}
+
+
+
+

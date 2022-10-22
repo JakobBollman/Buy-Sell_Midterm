@@ -8,8 +8,26 @@
 const express = require('express');
 const router  = express.Router();
 
+
+// EXAMPLE
 router.get('/', (req, res) => {
   res.render('users');
-}); 
+});
+
+// GET /users/login
+router.get('/login', (req, res) => {
+  // Set admin user cookies (MAKE THIS users.id?)
+  req.session.user_id = 'admin';
+  res.redirect('/listings');
+});
+
+// GET /users/register
+router.get('/register', (req, res) => {
+  // Set regular user cookies (MAKE THIS users.id?)
+  req.session.user_id = 'user';
+  res.redirect('/listings');
+});
+
+
 
 module.exports = router;

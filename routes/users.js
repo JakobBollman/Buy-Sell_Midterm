@@ -24,7 +24,7 @@ router.get('/login', (req, res) => {
 // GET /users/register
 router.get('/register', (req, res) => {
   // Set regular user cookies (MAKE THIS users.id?)
-  req.session.user_id = 'user';
+  req.session.user_id = 8;
   res.redirect('/listings');
 });
 

@@ -2,37 +2,49 @@ const express = require('express');
 const router = express.Router();
 const listingQueries = require('../db/queries/listings');
 
+
 // GET /listings
 router.get('/', (req, res) => {
-  // Placeholder
-  // res.send('listings home page');
 
   // Query for all listings
   listingQueries.getListings(req.query)
-  .then((listings) => {
+  .then((listingsData) => {
+
     // Placeholder
-    res.send(listings);
+    res.send(listingsData);
   });
 });
+
 
 // GET /listings/:id
 router.get('/:id', (req, res) => {
-  // Placeholder
-  // res.send('Specific listing page');
+
+  // Capture request paramenter
+  const listingID = req.params['id'];
 
   // Query for listing, comments
-  listingQueries.getListing()
-  .then((listing) => {
-    res.send(listing);
+  listingQueries.getListing(listingID)
+  .then((listingData) => {
+
+    // Placeholder
+    res.send(listingData);
   });
 });
 
+
 // GET /listings/favourites
 router.get('/favourites', (req, res) => {
-  // Placeholder
-  res.send('Favourite listings');
+
+  // Capture user id from cookie
+  const userID = req.session.user_id;
+
   // Query for favourite listings
+  listingQueries.getFavouriteListings(userID)
+  .then((favListingsData) => {
+    res.send(favListingsData);
+  })
 });
+
 
 // POST /listings (create new listing)
 router.post('/', (req, res) => {

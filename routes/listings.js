@@ -11,15 +11,20 @@ router.get('/', (req, res) => {
   listingQueries.getListings(req.query)
   .then((listings) => {
     // Placeholder
-    res.json(listings);
-  })
+    res.send(listings);
+  });
 });
 
 // GET /listings/:id
 router.get('/:id', (req, res) => {
   // Placeholder
-  res.send('Specific listing page');
+  // res.send('Specific listing page');
+
   // Query for listing, comments
+  listingQueries.getListing()
+  .then((listing) => {
+    res.send(listing);
+  });
 });
 
 // GET /listings/favourites

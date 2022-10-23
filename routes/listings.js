@@ -1,11 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const listingQueries = require('../db/queries/listings');
 
 // GET /listings
 router.get('/', (req, res) => {
   // Placeholder
-  res.send('listings home page');
-  // Query for listings, limit
+  // res.send('listings home page');
+
+  // Query for all listings
+  listingQueries.getListings(req.query)
+  .then((listings) => {
+    // Placeholder
+    res.json(listings);
+  })
 });
 
 // GET /listings/:id

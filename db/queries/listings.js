@@ -1,6 +1,8 @@
 const db = require('../connection');
 
-const getListings = () => {
+// General function
+// Refactor to accept filters in options object (ref LightBnB getAllProperties)
+const getListings = (options) => {
   return db.query('SELECT * FROM listings LIMIT 10;')
     .then(data => {
       return data.rows;

@@ -22,6 +22,7 @@ const getListing = (id) => {
     });
 };
 
+
 const getFavouriteListings = (userId) => {
   return db.query(`
     SELECT * FROM listings
@@ -35,9 +36,30 @@ const getFavouriteListings = (userId) => {
 };
 
 
+const createListing = (listingAttributes) => {
+  // Placeholder listing attributes (to be replaced with listingAttributes argument)
+  const attributes = [
+    7,
+    'Test Product',
+    'Test product by the Mayor',
+    99,
+    'Misc',
+    false,
+    'active'
+  ];
+  return db.query(`INSERT INTO listings (owner_id, title, description, price, category, sold_status, active_status)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  RETURNING *`,
+  attributes
+  )
+  .then (data => {
+    return data.rows[0];
+  });
+}
 
 module.exports = {
   getListings,
   getListing,
   getFavouriteListings,
+  createListing,
 };

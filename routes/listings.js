@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   listingQueries.getListings(req.query)
   .then((listingsData) => {
 
-    // Placeholder
+    // Placeholder returning all listings
     res.send(listingsData);
   });
 });
@@ -26,7 +26,7 @@ router.get('/favourites', (req, res) => {
   listingQueries.getFavouriteListings(userID)
   .then((favListingsData) => {
 
-    // Placeholder
+    // Placeholder returning all favourite listings
     res.send(favListingsData);
   })
 });
@@ -36,13 +36,13 @@ router.get('/favourites', (req, res) => {
 router.get('/:id', (req, res) => {
 
   // Capture request paramenter
-  const listingID = req.params['id'];
+  const listingID = req.params.id;
 
   // Query for listing, comments
   listingQueries.getListing(listingID)
   .then((listingData) => {
 
-    // Placeholder
+    // Placeholder returning the selected listing
     res.send(listingData);
   });
 });
@@ -50,9 +50,14 @@ router.get('/:id', (req, res) => {
 
 // POST /listings (create new listing)
 router.post('/', (req, res) => {
-  // Placeholder
-  res.send('Create listing');
+
   // Insert record into listings table, redirect to listing page
+  listingQueries.createListing()
+  .then((createdListing) => {
+
+    // Placeholder returning newly created listing
+    res.send(createdListing);
+  })
 });
 
 

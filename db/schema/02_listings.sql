@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS listings CASCADE;
-DROP TYPE categories;
+DROP TYPE IF EXISTS categories;
 CREATE TYPE categories AS ENUM ('Farming', 'Lighting', 'Misc', 'Food');
 CREATE TABLE listings (
   id SERIAL PRIMARY KEY NOT NULL,

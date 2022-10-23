@@ -9,21 +9,16 @@ const express = require('express');
 const router  = express.Router();
 
 
-// EXAMPLE
-router.get('/', (req, res) => {
-  res.render('users');
-});
-
 // GET /users/login
 router.get('/login', (req, res) => {
-  // Set admin user cookies (MAKE THIS users.id?)
-  req.session.user_id = 'admin';
+  // Hard-coded to user Mayor who has listings
+  req.session.user_id = 7;
   res.redirect('/listings');
 });
 
 // GET /users/register
 router.get('/register', (req, res) => {
-  // Set regular user cookies (MAKE THIS users.id?)
+  // Hard-coded to user Anon Villager who has favourite listings
   req.session.user_id = 8;
   res.redirect('/listings');
 });

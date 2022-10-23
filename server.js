@@ -48,7 +48,6 @@ app.use('/listings', listingsRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  // to be replaced with redirect to listings.ejs (JB working on)
   res.redirect('/listings');
 });
 

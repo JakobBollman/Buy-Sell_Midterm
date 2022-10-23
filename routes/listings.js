@@ -16,6 +16,22 @@ router.get('/', (req, res) => {
 });
 
 
+// GET /listings/favourites
+router.get('/favourites', (req, res) => {
+
+  // Capture user id from cookie
+  const userID = req.session.user_id;
+
+  // Query for user's favourite listings
+  listingQueries.getFavouriteListings(userID)
+  .then((favListingsData) => {
+
+    // Placeholder
+    res.send(favListingsData);
+  })
+});
+
+
 // GET /listings/:id
 router.get('/:id', (req, res) => {
 
@@ -32,26 +48,13 @@ router.get('/:id', (req, res) => {
 });
 
 
-// GET /listings/favourites
-router.get('/favourites', (req, res) => {
-
-  // Capture user id from cookie
-  const userID = req.session.user_id;
-
-  // Query for favourite listings
-  listingQueries.getFavouriteListings(userID)
-  .then((favListingsData) => {
-    res.send(favListingsData);
-  })
-});
-
-
 // POST /listings (create new listing)
 router.post('/', (req, res) => {
   // Placeholder
   res.send('Create listing');
   // Insert record into listings table, redirect to listing page
 });
+
 
 // POST /listings/:id
 router.post('/:id', (req, res) => {

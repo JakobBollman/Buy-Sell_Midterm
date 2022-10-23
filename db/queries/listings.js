@@ -1,18 +1,19 @@
 const db = require('../connection');
 
-// Function to retrieve listings with or without search/filters
+// General use function to retrieve listings with or without search/filters
 // Refactor to accept search/filters in options object (ref LightBnB getAllProperties)
 const getListings = (options) => {
-  return db.query('SELECT * FROM listings LIMIT 8;')
+  return db.query('SELECT * FROM listings;')
     .then(data => {
       return data.rows;
     });
 };
 
+
 const getListing = (id) => {
   return db.query(`
     SELECT * FROM listings
-    JOIN comments ON listings.id = listing_id
+    LEFT JOIN comments ON listings.id = listing_id
     WHERE listings.id = $1;`,
     [id]
   )
@@ -24,8 +25,8 @@ const getListing = (id) => {
 const getFavouriteListings = (userId) => {
   return db.query(`
     SELECT * FROM listings
-    JOIN favourites ON users.id = user_id
-    WHERE users.id = $1;`,
+    JOIN favourites ON listings.id = listing_id
+    WHERE user_id = $1;`,
     [userId]
   )
   .then (data => {

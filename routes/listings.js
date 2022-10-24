@@ -7,19 +7,6 @@ const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
 
 
-// GET /listings
-router.get('/', (req, res) => {
-
-  // Query for all listings
-  listingsQueries.getListings(req.query)
-  .then((listingsData) => {
-
-    // Placeholder returning all listings
-    res.render('listings', listingsData);
-  });
-});
-
-
 // GET /listings/favourites
 router.get('/favourites', (req, res) => {
 
@@ -52,33 +39,15 @@ router.get('/:id', (req, res) => {
 });
 
 
-// POST /listings (create new listing)
-router.post('/', (req, res) => {
+// GET /listings
+router.get('/', (req, res) => {
 
-  // Capture listing attributes from form and owner's id
-  const listingAttributes = {...req.body, owner_id : req.session.user_id};
+  // Query for all listings
+  listingsQueries.getListings(req.query)
+  .then((listingsData) => {
 
-  // Pass attributes into new listing query
-  listingsQueries.createListing(listingAttributes)
-  .then((createdListing) => {
-
-    // Placeholder returning newly created listing
-    res.send(createdListing);
-  });
-});
-
-
-// DELETE /listings/:id (status deleted)
-// Implement owner and listing checks
-router.delete('/:id', (req, res) => {
-
-  // Capture listing id parameter
-  const listingID = req.params.id;
-
-  listingsQueries.deleteListing(listingID)
-  .then(() => {
-    // Placeholder
-    res.redirect('/listings');
+    // Placeholder returning all listings
+    res.render('listings', listingsData);
   });
 });
 
@@ -99,5 +68,38 @@ router.post('/:id', (req, res) => {
   });
 })
 */
+
+
+// DELETE /listings/:id (status deleted)
+// Implement owner and listing checks
+router.delete('/:id', (req, res) => {
+
+  // Capture listing id parameter
+  const listingID = req.params.id;
+
+  listingsQueries.deleteListing(listingID)
+  .then(() => {
+    // Placeholder
+    res.redirect('/listings');
+  });
+});
+
+
+
+// POST /listings (create new listing)
+router.post('/', (req, res) => {
+
+  // Capture listing attributes from form and owner's id
+  const listingAttributes = {...req.body, owner_id : req.session.user_id};
+
+  // Pass attributes into new listing query
+  listingsQueries.createListing(listingAttributes)
+  .then((createdListing) => {
+
+    // Placeholder returning newly created listing
+    res.send(createdListing);
+  });
+});
+
 
 module.exports = router;

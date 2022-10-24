@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const listingsQueries = require('../db/queries/listings');
-const commentsQueries = require('../db/queries/comments');
 const methodOverride = require('method-override');
 
 router.use(methodOverride('_method'));
+
+const listingsQueries = require('../db/queries/listings');
+// const commentsQueries = require('../db/queries/comments');
 
 
 // GET /listings/favourites
@@ -77,13 +78,13 @@ router.delete('/:id', (req, res) => {
   // Capture listing id parameter
   const listingID = req.params.id;
 
+  // Query to mark listing as deleted
   listingsQueries.deleteListing(listingID)
   .then(() => {
     // Placeholder
     res.redirect('/listings');
   });
 });
-
 
 
 // POST /listings (create new listing)
@@ -100,6 +101,41 @@ router.post('/', (req, res) => {
     res.send(createdListing);
   });
 });
+
+
+// PATCH /listings/:id/fav
+// To be integrated to favourites queries (TS working on)
+/*
+router.patch('/:id/fav', (req, res) => {
+
+  // Capture listing id and user id
+  const listingID = req.params.id;
+  const userID = req.session.user_id;
+
+  // Query to mark listing as favourite
+  favouritesQueries.markListingFavourite(listingID, userID)
+  .then(() => {
+    return;
+  });
+
+});
+*/
+
+
+// PATCH /listings/:id/sold
+router.patch('/:id/sold', (req, res) => {
+
+  // Capture listing id
+  const listingID = req.params.id;
+
+  // Query to mark listing as sold
+  favouritesQueries.markListingSold(listingID)
+  .then(() => {
+    return;
+  });
+
+});
+
 
 
 module.exports = router;

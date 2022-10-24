@@ -4,14 +4,67 @@ const db = require('../connection');
 // General use function to retrieve listings with or without search/filters
 // Refactor to accept search/filters in options object (ref LightBnB getAllProperties)
 const getAllListings = (options) => {
-  
+  const queryParams = [];
+  let queryString = `SELECT * FROM listings`
 
+  // I think this will capture the 'seach' field, and then we'll query the submitted search against the 'titles'
+  if (options.title) {
+    queryParams.push(`%${options.title}%`);
+    if (queryParams.length === 1) {
+      queryString += `WHERE title ILIKE $${queryParams.length} `;
+    } else {
+      queryString += `AND title ILIKE $${queryParams.length} `;
+    }
+  }
 
-  return db.query('SELECT * FROM listings;')
-    .then(data => {
-      return data.rows;
-    });
-};
+  //I'm hoping we can set this for clicking on the 'owner' of any listing
+  if (options.owner_id) {
+    queryParams.push(options.owner_id);
+    if (queryParams.length === 1) {
+      queryString += `WHERE owner_id = $${queryParams.length} `;
+    } else {
+      queryString += `AND owner_id = $${queryParams.length} `;
+    }
+  }
+
+  //seach filter for price, 'min' and 'max_price' will have to be options on the search form we create
+  if (options.min_price) {
+    queryParams.push(options.min_price);
+    if (queryParams.length === 1) {
+      queryString += `WHERE price >= $${queryParams.length} `;
+    } else {
+      queryString += `AND price >= $${queryParams.length} `;
+    }
+  }
+  if (options.max_price) {
+    queryParams.push(options.max_price);
+    if (queryParams.length === 1) {
+      queryString += `WHERE price <= $${queryParams.length} `;
+    } else {
+      queryString += `AND price <= $${queryParams.length} `;
+    }
+  }
+
+  //ideally we can make the category part of the search form a drop down bar that only allows the correct category options
+  if (options.category) {
+    queryParams.push(options.category);
+    if (queryParams.length === 1) {
+      queryString += `WHERE category = $${queryParams.length} `;
+    } else {
+      queryString += `AND category = $${queryParams.length} `;
+    }
+  }
+
+  queryString += `
+  GROUP BY listings.id
+  ORDER BY price
+  `;
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {return result.rows})
+    .catch((err) => console.log(err.message));
+}
 
 
 const getListing = (id) => {

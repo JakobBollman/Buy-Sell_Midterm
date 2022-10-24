@@ -141,7 +141,7 @@ const deleteListing = (id) => {
 module.exports = {
   getAllListings,
   getListing,
-  getFavouriteListings,
+  getMyListings,
   createListing,
   deleteListing,
   markListingSold,

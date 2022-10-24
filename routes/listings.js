@@ -48,8 +48,11 @@ router.get('/', (req, res) => {
   .then((listingsData) => {
 
     // Placeholder returning all listings
-    res.render('listings', listingsData);
-  });
+    res.send(listingsData);
+  })
+  .catch((errorMessage) => {
+    res.send(errorMessage);
+  })
 });
 
 
@@ -71,38 +74,6 @@ router.post('/:id', (req, res) => {
 */
 
 
-// DELETE /listings/:id (status deleted)
-// Implement owner and listing checks
-router.delete('/:id', (req, res) => {
-
-  // Capture listing id parameter
-  const listingID = req.params.id;
-
-  // Query to mark listing as deleted
-  listingsQueries.deleteListing(listingID)
-  .then(() => {
-    // Placeholder
-    res.redirect('/listings');
-  });
-});
-
-
-// POST /listings (create new listing)
-router.post('/', (req, res) => {
-
-  // Capture listing attributes from form and owner's id
-  const listingAttributes = {...req.body, owner_id : req.session.user_id};
-
-  // Pass attributes into new listing query
-  listingsQueries.createListing(listingAttributes)
-  .then((createdListing) => {
-
-    // Placeholder returning newly created listing
-    res.send(createdListing);
-  });
-});
-
-
 // PATCH /listings/:id/fav
 // To be integrated to favourites queries (TS working on)
 /*
@@ -122,6 +93,29 @@ router.patch('/:id/fav', (req, res) => {
 */
 
 
+router.use((req, res) => {
+  if (req.session.user_id !== 'admin') {
+    res.send('Please log in as admin');
+  }
+});
+
+
+// POST /listings (create new listing)
+router.post('/', (req, res) => {
+
+  // Capture listing attributes from form and owner's id
+  const listingAttributes = {...req.body, owner_id : req.session.user_id};
+
+  // Pass attributes into new listing query
+  listingsQueries.createListing(listingAttributes)
+  .then((createdListing) => {
+
+    // Placeholder returning newly created listing
+    res.send(createdListing);
+  });
+});
+
+
 // PATCH /listings/:id/sold
 router.patch('/:id/sold', (req, res) => {
 
@@ -136,6 +130,20 @@ router.patch('/:id/sold', (req, res) => {
 
 });
 
+
+// DELETE /listings/:id (status deleted)
+router.delete('/:id', (req, res) => {
+
+  // Capture listing id parameter
+  const listingID = req.params.id;
+
+  // Query to mark listing as deleted
+  listingsQueries.deleteListing(listingID)
+  .then(() => {
+    // Placeholder
+    res.redirect('/listings');
+  });
+});
 
 
 module.exports = router;

@@ -7,6 +7,9 @@ const getListings = (options) => {
   return db.query('SELECT * FROM listings;')
     .then(data => {
       return data.rows;
+    })
+    .catch((err) => {
+      return err.message;
     });
 };
 

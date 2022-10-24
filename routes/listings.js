@@ -35,7 +35,7 @@ router.get('/favourites', (req, res) => {
 // GET /listings/:id
 router.get('/:id', (req, res) => {
 
-  // Capture listing id parameter
+  // Capture listing id
   const listingID = req.params.id;
 
   // Query for listing, comments
@@ -65,10 +65,17 @@ router.post('/', (req, res) => {
 
 
 // POST /listings/:id
+// Implement owner and listing checks
 router.post('/:id', (req, res) => {
-  // Placeholder
-  res.send('Delete listing');
-  // Change status of listing, redirect
+
+  // Capture listing id parameter
+  const listingID = req.params.id;
+
+  listingQueries.deleteListing(listingID)
+  .then(() => {
+    // Placeholder
+    res.redirect('/listings');
+  })
 });
 
 module.exports = router;

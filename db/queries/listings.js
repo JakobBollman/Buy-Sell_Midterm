@@ -1,5 +1,6 @@
 const db = require('../connection');
 
+
 // General use function to retrieve listings with or without search/filters
 // Refactor to accept search/filters in options object (ref LightBnB getAllProperties)
 const getListings = (options) => {
@@ -37,7 +38,7 @@ const getFavouriteListings = (userId) => {
 
 
 const createListing = (listingAttributes) => {
-  // Assign content of listingAttributes object into variables
+  // Assign content of listingAttributes object to variables
   const {
     owner_id,
     title,
@@ -55,10 +56,10 @@ const createListing = (listingAttributes) => {
     category,
   ];
 
-  // Pass array to insert query
+  // Pass array to insertion query
   return db.query(`INSERT INTO listings (owner_id, title, description, price, category)
   VALUES ($1, $2, $3, $4, $5)
-  RETURNING *`,
+  RETURNING *;`,
   queryParams
   )
   .then (data => {
@@ -66,9 +67,20 @@ const createListing = (listingAttributes) => {
   });
 }
 
+
+const deleteListing = (id) => {
+  return db.query('DELETE FROM listings WHERE id = $1;', [id])
+  .then((data) => {
+
+    return;
+  });
+}
+
+
 module.exports = {
   getListings,
   getListing,
   getFavouriteListings,
   createListing,
+  deleteListing,
 };

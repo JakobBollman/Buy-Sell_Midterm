@@ -67,9 +67,15 @@ const createListing = (listingAttributes) => {
   });
 }
 
+const markListingSold = (id) => {
+  return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *', [id])
+  .then((data) => {
+    return;
+  })
+}
 
 const deleteListing = (id) => {
-  return db.query('DELETE FROM listings WHERE id = $1;', [id])
+  return db.query('UPDATE TABLE listings SET active_status = deleted WHERE id = $1 RETURNING *', [id])
   .then((data) => {
 
     return;
@@ -83,4 +89,5 @@ module.exports = {
   getFavouriteListings,
   createListing,
   deleteListing,
+  markListingSold,
 };

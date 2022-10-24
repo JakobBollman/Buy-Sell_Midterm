@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   .then((listingsData) => {
 
     // Placeholder returning all listings
-    res.send(listingsData);
+    res.render('listings', listingsData);
   });
 });
 

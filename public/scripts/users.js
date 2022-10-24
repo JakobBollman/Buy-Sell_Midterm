@@ -17,7 +17,12 @@ $(() => {
     });
   });
 
-  
+
+  //placeholder, my-listings will be whatever we call that link
+  $('#my-listings').on('click', () => {
+    
+  })
+
 
 
 
@@ -41,9 +46,9 @@ const createCommentElement = function (data) {
 };
 
 //takes new HTML and adds to end of comment list
-const renderComments = function (tweets) {
-  for (let tweet of tweets) {
-    const $tweet = createTweetElement(tweet);
-    $('.tweets').append($tweet);
+const renderComments = function (comments) {
+  for (let comment of comments) {
+    const $comment = createCommentElement(comment);
+    $('.comments').append($comment);
   }
 };

@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const listingQueries = require('../db/queries/listings');
+const listingsQueries = require('../db/queries/listings');
+const commentsQueries = require('../db/queries/comments');
+const methodOverride = require('method-override');
+
+router.use(methodOverride('_method'));
 
 
 // GET /listings
 router.get('/', (req, res) => {
 
   // Query for all listings
-  listingQueries.getListings(req.query)
+  listingsQueries.getListings(req.query)
   .then((listingsData) => {
 
     // Placeholder returning all listings
@@ -23,12 +27,12 @@ router.get('/favourites', (req, res) => {
   const userID = req.session.user_id;
 
   // Query for user's favourite listings
-  listingQueries.getFavouriteListings(userID)
+  listingsQueries.getFavouriteListings(userID)
   .then((favListingsData) => {
 
     // Placeholder returning all favourite listings
     res.send(favListingsData);
-  })
+  });
 });
 
 
@@ -39,7 +43,7 @@ router.get('/:id', (req, res) => {
   const listingID = req.params.id;
 
   // Query for listing, comments
-  listingQueries.getListing(listingID)
+  listingsQueries.getListing(listingID)
   .then((listingData) => {
 
     // Placeholder returning the selected listing
@@ -55,27 +59,45 @@ router.post('/', (req, res) => {
   const listingAttributes = {...req.body, owner_id : req.session.user_id};
 
   // Pass attributes into new listing query
-  listingQueries.createListing(listingAttributes)
+  listingsQueries.createListing(listingAttributes)
   .then((createdListing) => {
 
     // Placeholder returning newly created listing
     res.send(createdListing);
-  })
+  });
 });
 
 
-// POST /listings/:id
+// DELETE /listings/:id (status deleted)
 // Implement owner and listing checks
-router.post('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
   // Capture listing id parameter
   const listingID = req.params.id;
 
-  listingQueries.deleteListing(listingID)
+  listingsQueries.deleteListing(listingID)
   .then(() => {
     // Placeholder
     res.redirect('/listings');
-  })
+  });
 });
+
+
+// POST /listings/:id (post comment)
+// To be integrated to comments queries (TS working on)
+/*
+router.post('/:id', (req, res) => {
+
+  // Capture listing, user and comment (verify <form name= >)
+  const listingID = req.params.id;
+  const userID = req.session.user_id;
+  const commentContent = req.body.comment;
+
+  commentsQueries.createComment(listingID, userID, commentContent)
+  .then((postedComment) => {
+    res.send(postedComment);
+  });
+})
+*/
 
 module.exports = router;

@@ -70,10 +70,6 @@ const createListing = (listingAttributes) => {
 
 const deleteListing = (id) => {
   return db.query('DELETE FROM listings WHERE id = $1;', [id])
-  .then((data) => {
-
-    return;
-  });
 }
 
 

@@ -1,26 +1,34 @@
 const db = require('../connection');
 
-// General function
-// Refactor to accept filters in options object (ref LightBnB getAllProperties)
+
+// General use function to retrieve listings with or without search/filters
+// Refactor to accept search/filters in options object (ref LightBnB getAllProperties)
 const getListings = (options) => {
-  return db.query('SELECT * FROM listings LIMIT 10;')
+  return db.query('SELECT * FROM listings;')
     .then(data => {
       return data.rows;
     });
 };
 
+
 const getListing = (id) => {
-  return db.query(`SELECT * FROM listings WHERE id = $1;`, [id])
+  return db.query(`
+    SELECT * FROM listings
+    LEFT JOIN comments ON listings.id = listing_id
+    WHERE listings.id = $1;`,
+    [id]
+  )
     .then (data => {
       return data.rows[0];
     });
 };
 
+
 const getFavouriteListings = (userId) => {
   return db.query(`
     SELECT * FROM listings
-    JOIN favourites ON users.id = user_id
-    WHERE users.id = $1;`,
+    JOIN favourites ON listings.id = listing_id
+    WHERE user_id = $1;`,
     [userId]
   )
   .then (data => {
@@ -29,9 +37,50 @@ const getFavouriteListings = (userId) => {
 };
 
 
+const createListing = (listingAttributes) => {
+  // Assign content of listingAttributes object to variables
+  const {
+    owner_id,
+    title,
+    description,
+    price,
+    category,
+  } = listingAttributes;
+
+  // Place variables into array in correct order
+  const queryParams = [
+    owner_id,
+    title,
+    description,
+    price,
+    category,
+  ];
+
+  // Pass array to insertion query
+  return db.query(`INSERT INTO listings (owner_id, title, description, price, category)
+  VALUES ($1, $2, $3, $4, $5)
+  RETURNING *;`,
+  queryParams
+  )
+  .then (data => {
+    return data.rows[0];
+  });
+}
+
+
+const deleteListing = (id) => {
+  return db.query('DELETE FROM listings WHERE id = $1;', [id])
+  .then((data) => {
+
+    return;
+  });
+}
+
 
 module.exports = {
   getListings,
   getListing,
   getFavouriteListings,
+  createListing,
+  deleteListing,
 };

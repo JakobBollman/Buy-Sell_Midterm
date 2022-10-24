@@ -33,25 +33,18 @@ app.use(cookieSession({
 
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
 const usersRoutes = require('./routes/users');
 const listingsRoutes = require('./routes/listings');
 
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/users', usersRoutes);
 app.use('/listings', listingsRoutes);
 
 // Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
 app.get('/', (req, res) => {
-  // to be replaced with redirect to listings.ejs (JB working on)
-  res.render('listings');
+  res.redirect('/listings');
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`App listening on port ${PORT}`);
 });

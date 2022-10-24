@@ -2,7 +2,6 @@ const db = require('../connection');
 
 
 // General use function to retrieve listings with or without search/filters
-// Refactor to accept search/filters in options object (ref LightBnB getAllProperties)
 const getAllListings = (options) => {
   const queryParams = [];
   let queryString = `SELECT * FROM listings`
@@ -60,11 +59,14 @@ const getAllListings = (options) => {
   ORDER BY price
   `;
 
-  return db
-    .query(queryString, queryParams)
-    .then((result) => {return result.rows})
-    .catch((err) => console.log(err.message));
-}
+  return db.query(queryString, queryParams)
+  .then(data => {
+    return data.rows
+  })
+  .catch(err => {
+    return err.message;
+  });
+};
 
 
 const getListing = (id) => {
@@ -74,9 +76,12 @@ const getListing = (id) => {
     WHERE listings.id = $1;`,
     [id]
   )
-    .then (data => {
-      return data.rows[0];
-    });
+  .then(data => {
+    return data.rows[0];
+  })
+  .catch(err => {
+    return err.message;
+  });
 };
 
 
@@ -87,8 +92,11 @@ const getFavouriteListings = (userId) => {
     WHERE user_id = $1;`,
     [userId]
   )
-  .then (data => {
-    return data.rows;
+  .then(data => {
+    return data.rows
+  })
+  .catch(err => {
+    return err.message;
   });
 };
 
@@ -118,22 +126,31 @@ const createListing = (listingAttributes) => {
   RETURNING *;`,
   queryParams
   )
-  .then (data => {
+  .then(data => {
     return data.rows[0];
+  })
+  .catch(err => {
+    return err.message;
   });
 }
 
 const markListingSold = (id) => {
   return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *', [id])
-  .then((data) => {
+  .then(data => {
     return;
   })
+  .catch(err => {
+    return err.message;
+  });
 }
 
 const deleteListing = (id) => {
   return db.query('UPDATE TABLE listings SET active_status = deleted WHERE id = $1 RETURNING *', [id])
   .then((data) => {
     return;
+  })
+  .catch(err => {
+    return err.message;
   });
 }
 

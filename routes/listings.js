@@ -20,23 +20,24 @@ router.get('/favourites', (req, res) => {
 
     // Placeholder returning all favourite listings
     res.send(favListingsData);
-  });
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 });
 
 
 // GET /listings/:id
 router.get('/:id', (req, res) => {
-
   // Capture listing id
   const listingID = req.params.id;
 
   // Query for listing, comments
   listingsQueries.getListing(listingID)
   .then((listingData) => {
-
+    console.log('listingDAta', listingData)
     // Placeholder returning the selected listing
     res.send(listingData);
-  });
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 });
 
 
@@ -44,15 +45,13 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
 
   // Query for all listings
-  listingsQueries.getListings(req.query)
+  listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
 
     // Placeholder returning all listings
     res.send(listingsData);
   })
-  .catch((errorMessage) => {
-    res.send(errorMessage);
-  })
+  .catch((errorMessage) => res.send(errorMessage));
 });
 
 
@@ -69,7 +68,8 @@ router.post('/:id', (req, res) => {
   commentsQueries.createComment(listingID, userID, commentContent)
   .then((postedComment) => {
     res.send(postedComment);
-  });
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 })
 */
 
@@ -87,7 +87,8 @@ router.patch('/:id/fav', (req, res) => {
   favouritesQueries.markListingFavourite(listingID, userID)
   .then(() => {
     return;
-  });
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 
 });
 */
@@ -112,7 +113,8 @@ router.post('/', (req, res) => {
 
     // Placeholder returning newly created listing
     res.send(createdListing);
-  });
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 });
 
 
@@ -126,8 +128,8 @@ router.patch('/:id/sold', (req, res) => {
   favouritesQueries.markListingSold(listingID)
   .then(() => {
     return;
-  });
-
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 });
 
 
@@ -142,7 +144,8 @@ router.delete('/:id', (req, res) => {
   .then(() => {
     // Placeholder
     res.redirect('/listings');
-  });
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 });
 
 

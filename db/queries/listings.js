@@ -37,20 +37,29 @@ const getFavouriteListings = (userId) => {
 
 
 const createListing = (listingAttributes) => {
-  // Placeholder listing attributes (to be replaced with listingAttributes argument)
-  const attributes = [
-    7,
-    'Test Product',
-    'Test product by the Mayor',
-    99,
-    'Misc',
-    false,
-    'active'
+  // Assign content of listingAttributes object into variables
+  const {
+    owner_id,
+    title,
+    description,
+    price,
+    category,
+  } = listingAttributes;
+
+  // Place variables into array in correct order
+  const queryParams = [
+    owner_id,
+    title,
+    description,
+    price,
+    category,
   ];
-  return db.query(`INSERT INTO listings (owner_id, title, description, price, category, sold_status, active_status)
-  VALUES ($1, $2, $3, $4, $5, $6, $7)
+
+  // Pass array to insert query
+  return db.query(`INSERT INTO listings (owner_id, title, description, price, category)
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING *`,
-  attributes
+  queryParams
   )
   .then (data => {
     return data.rows[0];

@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // GET /listings/favourites
 router.get('/favourites', (req, res) => {
 
-  // Capture user id from cookie
+  // Capture user id from cookie session
   const userID = req.session.user_id;
 
   // Query for user's favourite listings
@@ -35,7 +35,7 @@ router.get('/favourites', (req, res) => {
 // GET /listings/:id
 router.get('/:id', (req, res) => {
 
-  // Capture request paramenter
+  // Capture listing id parameter
   const listingID = req.params.id;
 
   // Query for listing, comments
@@ -51,8 +51,11 @@ router.get('/:id', (req, res) => {
 // POST /listings (create new listing)
 router.post('/', (req, res) => {
 
-  // Insert record into listings table, redirect to listing page
-  listingQueries.createListing()
+  // Capture listing attributes from form and owner's id
+  const listingAttributes = {...req.body, owner_id : req.session.user_id};
+
+  // Pass attributes into new listing query
+  listingQueries.createListing(listingAttributes)
   .then((createdListing) => {
 
     // Placeholder returning newly created listing

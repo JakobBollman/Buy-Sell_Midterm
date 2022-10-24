@@ -9,13 +9,13 @@ router.get('/login', (req, res) => {
   res.redirect('/listings');
 });
 
+
 // GET /users/register
 router.get('/register', (req, res) => {
   // Hard-coded to user Anon Villager (who has favourite listings)
   req.session.user_id = 8;
   res.redirect('/listings');
 });
-
 
 
 module.exports = router;

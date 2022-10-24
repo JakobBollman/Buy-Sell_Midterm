@@ -133,7 +133,6 @@ const markListingSold = (id) => {
 const deleteListing = (id) => {
   return db.query('UPDATE TABLE listings SET active_status = deleted WHERE id = $1 RETURNING *', [id])
   .then((data) => {
-
     return;
   });
 }

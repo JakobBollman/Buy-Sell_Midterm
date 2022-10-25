@@ -28,17 +28,17 @@
             <textarea name="title" id="search-text" placeholder="Search..."></textarea>
           </div>
           <div class="bottom_search">
-            <input type="number" name="search-max" id="search-max" placeholder="Min Price"></textarea>
-            <input type="number" name="search-min" id="search-min" placeholder="Max Price"></textarea>
+            <input type="number" name="min_price" id="search-max" placeholder="Min Price"></textarea>
+            <input type="number" name="max_price" id="search-min" placeholder="Max Price"></textarea>
             <div class="checkboxes">
               <label for="farming">
-                <input type="checkbox" id="farming" />Farming</label>
+                <input type="checkbox" id="farming" name="category" value="Farming"/>Farming</label>
               <label for="lighting">
-                <input type="checkbox" id="lighting" />Lighting</label>
+                <input type="checkbox" id="lighting" name="category" value="Lighting"/>Lighting</label>
               <label for="food">
-                <input type="checkbox" id="food" />Food</label>
+                <input type="checkbox" id="food" name="category" value="Food"/>Food</label>
               <label for="misc">
-                <input type="checkbox" id="misc" />Misc.</label>
+                <input type="checkbox" id="misc" name="category" value="Misc"/>Misc.</label>
             </div>
             <button type="submit">Submit</button>
           </div>

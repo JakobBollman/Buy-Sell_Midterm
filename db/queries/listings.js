@@ -92,19 +92,6 @@ const getListing = (id) => {
 };
 
 
-const getFavouriteListings = (userId) => {
-  return db.query(`
-    SELECT * FROM listings
-    JOIN favourites ON listings.id = listing_id
-    WHERE user_id = $1;`,
-    [userId]
-  )
-  .then (data => {
-    return data.rows;
-  });
-};
-
-
 const createListing = (listingAttributes) => {
   // Assign content of listingAttributes object to variables
   const {
@@ -137,26 +124,33 @@ const createListing = (listingAttributes) => {
     return err.message;
   });
 }
+
+
 const getMyListings = (userID) => {
-  return db.query(`SELECT * FROM listings WHERE owner_id = ${userID}`)
+  return db.query(`SELECT * FROM listings WHERE owner_id = ${userID};`)
   .then((data) => {
     return data.rows;
   })
 }
+
+
 const markListingSold = (id) => {
-  return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *', [id])
+  return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *;', [id])
   .then(data => {
-    return;
+    return data;
   })
   .catch(err => {
     return err.message;
   });
 }
 
+
 const deleteListing = (id) => {
-  return db.query('UPDATE TABLE listings SET active_status = deleted WHERE id = $1 RETURNING *', [id])
-  .then((data) => {
-    return;
+  return db.query(`UPDATE listings
+  SET active_status='deleted'
+  WHERE id = $1 RETURNING *;`, [id])
+  .then(data => {
+    return data;
   })
   .catch(err => {
     return err.message;

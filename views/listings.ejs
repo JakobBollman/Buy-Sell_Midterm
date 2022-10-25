@@ -53,8 +53,9 @@
 
             <%  for(let item of listings){  %>
               <%  if(item.featured === true){  %>
+                <%  console.log(item.url)  %>
                 <div class="listing">
-                  <img src="<%= item.url %>">
+                  <img src='<%= item.photo_url %>'>
                   <i class="fa-solid fa-heart"></i>
                   <div class="item_info">
                     <label class="name"><%= item.title %></label>
@@ -73,9 +74,9 @@
           <div class="all_items">
 
           <%  for(let item of listings){  %>
-            <%  if(item.featured === true){  %>
+            <%  if(item.featured === false){  %>
                 <div class="listing">
-                  <img src="<%= item.url %>">
+                  <img src="<%= item.photo_url %>">
                   <i class="fa-solid fa-heart"></i>
                   <div class="item_info">
                     <label class="name"><%= item.title %></label>

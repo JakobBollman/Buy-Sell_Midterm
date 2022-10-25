@@ -6,7 +6,7 @@ router.use(methodOverride('_method'));
 
 const listingsQueries = require('../db/queries/listings');
 const favouritesQueries = require('../db/queries/favourites');
-const commentsQueries = require('../db/queries/comments');
+// const commentsQueries = require('../db/queries/comments');
 
 // STRETCH Route to see a user's listings
 // router.get('/my_listings', (req, res) => {
@@ -66,47 +66,11 @@ router.get('/', (req, res) => {
   // Query for all listings
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
-    const templateVars = {listings : listingsData}
+    let temp = {listings : listingsData}
     // Placeholder returning all listings
     res.render('listings', templateVars);
   })
   .catch((errorMessage) => res.send(errorMessage));
-});
-
-
-// POST /listings/:id/favourite
-router.post('/:id/favourite', (req, res) => {
-
-  // Capture listing id and user id
-  const listingID = req.params.id;
-  const userID = req.session.user_id;
-
-  // Query to add listing to favourites
-  favouritesQueries.addToFavourites(listingID, userID)
-  .then(data => {
-    res.end();
-  })
-  .catch(errorMessage => res.send(errorMessage));
-
-});
-
-
-// DELETE /listings/:id/favourite
-router.delete('/:id/favourite', (req, res) => {
-
-  // Capture listing id and user id
-  // const listingID = req.params.id;
-  // const userID = req.session.user_id;
-  const listingID = req.body.id;
-  const userID = req.body.user;
-
-  // Query to remove listing from favourites
-  favouritesQueries.removeFromFavourites(userID, listingID)
-  .then(data => {
-    res.end();
-  })
-  .catch(errorMessage => res.send(errorMessage));
-
 });
 
 
@@ -127,6 +91,25 @@ router.post('/:id', (req, res) => {
   .catch((errorMessage) => res.send(errorMessage));
 })
 */
+
+
+// PATCH /listings/:id/fav
+router.patch('/:id/fav', (req, res) => {
+
+  // Capture listing id and user id
+  // const listingID = req.params.id;
+  // const userID = req.session.user_id;
+  const listingID = req.body.list;  //FOR CURL TESTING
+  const userID = req.body.user;      //FOR CURL TESTING
+
+  // Query to add listing to favourites
+  favouritesQueries.addToFavourites(listingID, userID)
+  .then(data => {
+    res.status(200);
+  })
+  .catch(errorMessage => res.send(errorMessage));
+
+});
 
 
 // Admin cookie session check
@@ -161,9 +144,9 @@ router.patch('/:id/sold', (req, res) => {
   const listingID = req.params.id;
 
   // Query to mark listing as sold
-  listingsQueries.markListingSold(listingID)
+  favouritesQueries.markListingSold(listingID)
   .then(data => {
-    res.end();
+    return;
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

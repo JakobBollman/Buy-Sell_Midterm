@@ -2,11 +2,12 @@ const db = require("../connection");
 
 const getFavouriteListings = (userID) => {
   return db.query(`
-    SELECT * FROM favourites
-    JOIN listings ON listing_id = listings.id
-    WHERE user_id = $1
-    GROUP BY favourites.id`,
-    [userID]
+  SELECT listings.id, title, description, price, category, sold_status
+  FROM listings
+  JOIN favourites ON listing_id = listings.id
+  WHERE user_id = $1
+  AND active_status = 'active';`,
+  [userID]
   )
   .then (data => {
     return data.rows;

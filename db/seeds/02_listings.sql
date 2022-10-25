@@ -1,4 +1,4 @@
-INSERT INTO listings (owner_id, title, description, price, category, sold_status, active_status)
+INSERT INTO listings (owner_id, title, description, price, category, sold_status, active_status, photo_url, featured)
 VALUES
 (12, 'New Pitchfork', 'Fresh from the blacksmith''s shop these pitchforks won''t leave you wanting. Move hay, pose with it in your yearly family photo, really show off your farming skills. \n Not intended for use as weapon.', 25, 'Farming', false, 'active', 'https://c8.alamy.com/comp/a5pwfj/farmer-holding-a-pitchfork-a5pwfj.jpg', false),
 (12, 'Rusty Pitchfork', 'For the farmer who wants a pitchfork with a little more personality. You don''t want to get poked by this bad boy, espiecially since tetanus shots don''t exist. Limited quantities available.', 15, 'Farming', false, 'active', 'https://img0.etsystatic.com/076/0/10255754/il_fullxfull.816461934_1kze.jpg', false),

@@ -76,11 +76,11 @@
         <section>
           <header>All Items</header>
           <label class="desc">Find Items Sold By People Near You!</label>
-          <div class="all_items" id="<%= item.id %>">
+          <div class="all_items" >
 
           <%  for(let item of listings){  %>
             <%  if(item.featured === false){  %>
-                <div class="listing">
+                <div class="listing" id="<%= item.id %>">
                   <img src="<%= item.photo_url %>">
                   <i class="fa-solid fa-heart"></i>
                   <label class="username"><%= users[(item.owner_id) - 1].name %></label>

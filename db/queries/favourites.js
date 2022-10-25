@@ -23,7 +23,7 @@ const addToFavourites = (userID, listingID) => {
     VALUES (${userID}, ${listingID});
   `)
   .then (data => {
-    return data;
+    return data.rows;
   })
   .catch(err => {
     return err.message;

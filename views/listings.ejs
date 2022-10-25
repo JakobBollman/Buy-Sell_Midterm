@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- FONTS -->
     <link href='https://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet'>
@@ -14,6 +15,9 @@
     <!-- CSS CALLS -->
     <link rel="stylesheet" href="../styles/listings_body.css" type="text/css" />
     <link rel="stylesheet" href="../styles/search.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/users.js"></script>
+
 
   </head>
   <body>
@@ -54,7 +58,7 @@
             <%  for(let item of listings){  %>
               <%  if(item.featured === true){  %>
                 <%  console.log(item.url)  %>
-                <div class="listing">
+                <div class="listing" id="<%= item.id %>">
                   <img src="<%= item.photo_url %>">
                   <i class="fa-solid fa-heart"></i>
                   <label class="username"><%= users[(item.owner_id) - 1].name %></label>
@@ -72,11 +76,11 @@
         <section>
           <header>All Items</header>
           <label class="desc">Find Items Sold By People Near You!</label>
-          <div class="all_items">
+          <div class="all_items" >
 
           <%  for(let item of listings){  %>
             <%  if(item.featured === false){  %>
-                <div class="listing">
+                <div class="listing" id="<%= item.id %>">
                   <img src="<%= item.photo_url %>">
                   <i class="fa-solid fa-heart"></i>
                   <label class="username"><%= users[(item.owner_id) - 1].name %></label>

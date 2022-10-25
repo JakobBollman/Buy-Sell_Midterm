@@ -1,6 +1,6 @@
 // Client facing scripts here
 
-$(() => {
+$(document).ready(function() {
 
   $('#fetch-users').on('click', () => {
     $.ajax({
@@ -19,13 +19,19 @@ $(() => {
 
 
   //placeholder, my-listings will be whatever we call that link
-  $('#my-listings').on('click', () => {
-
+  $('.listing').on('click', (event) => {
+    const listingId = event.currentTarget.id
+    $.ajax({
+      method: 'GET',
+      url: `/listing/${listingId}`
+    })
   })
 
 
+  
 
 
 });
+
 
 

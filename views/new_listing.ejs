@@ -12,15 +12,42 @@
     <link href='https://fonts.googleapis.com/css?family=PT Sans Narrow' rel='stylesheet'>
 
     <!-- CSS CALLS -->
-    <link rel="stylesheet" href="../styles/listings_body.css" type="text/css" />
+
+    <link rel="stylesheet" href="../styles/new_listing.css" type="text/css" />
 
   </head>
   <body>
     <%- include('partials/nav') %>
 
     <main class="container">
+      <section class='new-listing'>
+        <header>Create A New Listing</header>
+        <label class="desc">Make A Listing To Sell To People Near You!</label>
 
+        <section class="listing-info" id="listing-info">
+          <form id="create-listing">
+              <textarea name="listing-title" id="listing-title" placeholder="Title"></textarea>
+              <textarea name="listing-desc" id="listing-desc" placeholder="Description"></textarea>
 
+              <input type="number" name="listing-price" id="listing-price" placeholder="Price"></textarea>
+              <textarea name="listing-img-url" id="listing-img-url" placeholder="URL"></textarea>
+
+              <div class="checkboxes">
+                <label for="listing-is-farming">
+                  <input type="checkbox" id="listing-is-farming" />Farming</label>
+                <label for="listing-is-lighting">
+                  <input type="checkbox" id="listing-is-lighting" />Lighting</label>
+                <label for="listing-is-food">
+                  <input type="checkbox" id="listing-is-food" />Food</label>
+                <label for="listing-is-misc">
+                  <input type="checkbox" id="listing-is-misc" />Misc.</label>
+              </div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </section>
+
+      </section>
 
     </main>
   </body>

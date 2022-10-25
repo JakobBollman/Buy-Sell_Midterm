@@ -4,63 +4,45 @@ const db = require('../connection');
 // General use function to retrieve listings with or without search/filters
 const getAllListings = (options) => {
   const queryParams = [];
-  let queryString = `SELECT * FROM listings`
+  let queryString = `SELECT * FROM listings WHERE active_status = 'active'`
 
   // I think this will capture the 'seach' field, and then we'll query the submitted search against the 'titles'
   if (options.title) {
     queryParams.push(`%${options.title}%`);
-    if (queryParams.length === 1) {
-      queryString += `WHERE title ILIKE $${queryParams.length} `;
-    } else {
-      queryString += `AND title ILIKE $${queryParams.length} `;
+    queryString += `AND title ILIKE $${queryParams.length} `;
     }
-  }
 
   //I'm hoping we can set this for clicking on the 'owner' of any listing
   if (options.owner_id) {
     queryParams.push(options.owner_id);
-    if (queryParams.length === 1) {
-      queryString += `WHERE owner_id = $${queryParams.length} `;
-    } else {
-      queryString += `AND owner_id = $${queryParams.length} `;
+    queryString += `AND owner_id = $${queryParams.length} `;
     }
-  }
 
   //seach filter for price, 'min' and 'max_price' will have to be options on the search form we create
   if (options.min_price) {
     queryParams.push(options.min_price);
-    if (queryParams.length === 1) {
-      queryString += `WHERE price >= $${queryParams.length} `;
-    } else {
-      queryString += `AND price >= $${queryParams.length} `;
+    queryString += `AND price >= $${queryParams.length} `;
     }
-  }
+
   if (options.max_price) {
     queryParams.push(options.max_price);
-    if (queryParams.length === 1) {
-      queryString += `WHERE price <= $${queryParams.length} `;
-    } else {
-      queryString += `AND price <= $${queryParams.length} `;
+    queryString += `AND price <= $${queryParams.length} `;
     }
-  }
 
   //ideally we can make the category part of the search form a drop down bar that only allows the correct category options
   //will need changes to work with multiple category selection
   if (options.category) {
     queryParams.push(options.category);
-    if (queryParams.length === 1) {
-      queryString += `WHERE category = $${queryParams.length} `;
-    } else {
-      queryString += `AND category = $${queryParams.length} `;
+    queryString += `AND category = $${queryParams.length} `;
     }
-  }
+
 
   //this is intended to check if any options have been entered, and then add WHERE or AND to filter out deleted listings. need to check on whether 'active' needs single quotes. Should apply on every instance of the query
-  if (queryParams.length === 1) {
-    queryString += `WHERE active_status = 'active'`;
-  } else {
-    queryString += `AND active_status = 'active'`;
-  }
+  // if (queryParams.length === 1) {
+  //   queryString += `WHERE active_status = 'active'`;
+  // } else {
+  //   queryString += `AND active_status = 'active'`;
+  // }
   queryString += `
   GROUP BY listings.id
   ORDER BY price

@@ -7,6 +7,7 @@ router.use(methodOverride('_method'));
 const listingsQueries = require('../db/queries/listings');
 // const commentsQueries = require('../db/queries/comments');
 
+// STRETCH Route to see a user's listings
 router.get('/my_listings', (req, res) => {
 
   // Query for all listings
@@ -18,15 +19,10 @@ router.get('/my_listings', (req, res) => {
   });
 });
 
-router.get('/new_listing', (req, res) => {
 
-  // Query for all listings
-  listingQueries.getListings(req.query)
-  .then((listingsData) => {
-
-    // Placeholder returning all listings
-    res.render('new_listing',listingsData);
-  });
+// GET /listings/new
+router.get('/new', (req, res) => {
+    res.render('new_listing');
 });
 
 

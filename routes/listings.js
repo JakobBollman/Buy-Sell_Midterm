@@ -34,11 +34,11 @@ router.get('/favourites', (req, res) => {
   const userID = req.session.user_id;
 
   // Query for user's favourite listings
-  listingsQueries.getFavouriteListings(userID)
+  favouritesQueries.getFavouriteListings(userID)
   .then((favListingsData) => {
 
     // Placeholder returning all favourite listings
-    res.render('favourites',favListingsData);
+    res.send(favListingsData);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
   // Query for listing, comments
   listingsQueries.getListing(listingID)
   .then((listingData) => {
-    console.log('listingDAta', listingData)
+
     // Placeholder returning the selected listing
     res.send(listingData);
   })
@@ -100,12 +100,12 @@ router.patch('/:id/fav', (req, res) => {
   // const listingID = req.params.id;
   // const userID = req.session.user_id;
   const listingID = req.body.list;  //FOR CURL TESTING
-  const userID = req.body.use;      //FOR CURL TESTING
+  const userID = req.body.user;      //FOR CURL TESTING
 
   // Query to add listing to favourites
   favouritesQueries.addToFavourites(listingID, userID)
   .then(data => {
-
+    res.status(200);
   })
   .catch(errorMessage => res.send(errorMessage));
 

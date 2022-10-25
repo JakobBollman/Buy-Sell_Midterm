@@ -128,11 +128,11 @@ router.patch('/:id/fav', (req, res) => {
 
 
 // Admin cookie session check
-// router.use((req, res) => {
-//   if (req.session.user_id !== 'admin') {
-//     res.send('Please log in as admin');
-//   }
-// });
+router.use((req, res) => {
+  if (req.session.user_id !== 'admin') {
+    res.send('Please log in as admin');
+  }
+});
 
 
 // POST /listings (create new listing)

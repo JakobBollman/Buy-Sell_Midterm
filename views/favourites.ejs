@@ -27,8 +27,8 @@
           <label class="desc">Your Favourite Items From Around Town!</label>
           <div class="favourite_items">
 
-            <%  for(let item of listings){  %>
-              <%  if(item.featured === false){  %>
+            <%  for(let item of favourites){  %>
+
                   <div class="listing">
                     <img src="<%= item.photo_url %>">
                     <i class="fa-solid fa-heart"></i>
@@ -38,7 +38,7 @@
                       <label class="cost"><%= item.price %> Gold Coins</label>
                     </div>
                   </div>
-                <%  } %>
+                
             <%  } %>
 
           </div>

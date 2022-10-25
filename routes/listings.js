@@ -91,6 +91,25 @@ router.post('/:id/favourite', (req, res) => {
 });
 
 
+// DELETE /listings/:id/favourite
+router.delete('/:id/favourite', (req, res) => {
+
+  // Capture listing id and user id
+  // const listingID = req.params.id;
+  // const userID = req.session.user_id;
+  const listingID = req.body.id;
+  const userID = req.body.user;
+
+  // Query to remove listing from favourites
+  favouritesQueries.removeFromFavourites(userID, listingID)
+  .then(data => {
+    res.end();
+  })
+  .catch(errorMessage => res.send(errorMessage));
+
+});
+
+
 // POST /listings/:id (post comment)
 // To be integrated to comments queries (TS working on)
 /*

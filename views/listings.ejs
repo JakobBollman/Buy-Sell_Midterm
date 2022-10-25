@@ -53,6 +53,7 @@
 
             <%  for(let item of listings){  %>
               <%  if(item.featured === true){  %>
+                <%  console.log(item.url)  %>
                 <div class="listing">
                   <img src="<%= item.photo_url %>">
                   <i class="fa-solid fa-heart"></i>

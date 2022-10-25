@@ -63,6 +63,8 @@ router.get('/:id', (req, res) => {
 // GET /listings
 router.get('/', (req, res) => {
 
+  console.log(req.query);
+
   // Query for all listings
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {

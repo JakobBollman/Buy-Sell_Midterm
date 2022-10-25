@@ -46,6 +46,7 @@ const getAllListings = (options) => {
   }
 
   //ideally we can make the category part of the search form a drop down bar that only allows the correct category options
+  //will need changes to work with multiple category selection
   if (options.category) {
     queryParams.push(options.category);
     if (queryParams.length === 1) {

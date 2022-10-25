@@ -1,6 +1,6 @@
 section.search_listings {
   display: flex;
-  height: 100px;
+  height: 150px;
   width: 90vw;
   justify-content: center;
   align-items: center;
@@ -8,6 +8,11 @@ section.search_listings {
 }
 
 section.search_listings form{
+  display: flex;
+  flex-direction: column;
+}
+
+section.search_listings div.upper-search{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,7 +23,7 @@ section.search_listings i{
   font-size: 24px;
 }
 
-section.search_listings textarea{
+section.search_listings #search-text{
   display: flex;
   font-size: 24px;
   font-family: 'PT Sans Narrow','Sans-serif';
@@ -32,12 +37,64 @@ section.search_listings textarea{
   margin: 0.5em;
 }
 
+section.search_listings div.bottom_search{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+section.search_listings #search-max{
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  width: 100px;
+  height: 1.5em;
+  resize: none;
+  border: 0 none;
+  background: transparent;
+  outline: none;
+  border-bottom: 0.2em solid black;
+  margin: 0.5em 0.5em 0.5em 1.5em;
+}
+
+section.search_listings #search-min{
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  width: 100px;
+  height: 1.5em;
+  resize: none;
+  border: 0 none;
+  background: transparent;
+  outline: none;
+  border-bottom: 0.2em solid black;
+  margin: 0.5em 1.5em 0.5em 0.5em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+section.search_listings div.checkboxes{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+section.search_listings div.checkboxes label{
+  display: flex;
+  font-size: 12px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+}
+
 section.search_listings button{
   display: flex;
   font-size: 24px;
   height: 1.5em;
   font-family: 'PT Sans Narrow','Sans-serif';
-  border: none;
+  border: 2px solid black;
   margin: auto;
   background-color: rgb(160,160,160);
 }

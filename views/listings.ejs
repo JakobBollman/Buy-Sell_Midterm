@@ -21,11 +21,27 @@
 
     <main class="container">
 
-      <section class="search_listings">
+      <section class="search_listings" id="search">
         <form id="search">
-          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-          <textarea name="text" id="search-text" placeholder="Search..."></textarea>
-          <button type="submit">Submit</button>
+          <div class="upper-search">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            <textarea name="search-text" id="search-text" placeholder="Search..."></textarea>
+          </div>
+          <div class="bottom_search">
+            <input type="number" name="search-max" id="search-max" placeholder="Max Price"></textarea>
+            <input type="number" name="search-min" id="search-min" placeholder="Min Price"></textarea>
+            <div class="checkboxes">
+              <label for="farming">
+                <input type="checkbox" id="farming" />Farming</label>
+              <label for="lighting">
+                <input type="checkbox" id="lighting" />Lighting</label>
+              <label for="food">
+                <input type="checkbox" id="food" />Food</label>
+              <label for="misc">
+                <input type="checkbox" id="misc" />Misc.</label>
+            </div>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </section>
 
@@ -36,7 +52,7 @@
           <div class="featured_items">
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Torch A</label>
@@ -45,7 +61,7 @@
             </div>
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Torch A</label>
@@ -54,7 +70,7 @@
             </div>
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Torch A</label>
@@ -63,7 +79,7 @@
             </div>
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Crate of Rotten Tomatoes</label>
@@ -77,10 +93,10 @@
         <section>
           <header>All Items</header>
           <label class="desc">Find Items Sold By People Near You!</label>
-          <div class="featured_items">
+          <div class="all_items">
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Torch A</label>
@@ -89,7 +105,7 @@
             </div>
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Torch A</label>
@@ -98,7 +114,7 @@
             </div>
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Torch A</label>
@@ -107,7 +123,79 @@
             </div>
 
             <div class="listing">
-              <img src="images/Torch A.png">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Crate of Rotten Tomatoes</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
+              <i class="fa-solid fa-heart"></i>
+              <div class="item_info">
+                <label class="name">Torch A</label>
+                <label class="cost">10 Gold Coins</label>
+              </div>
+            </div>
+
+            <div class="listing">
+              <img src="/images/Torch-A.png">
               <i class="fa-solid fa-heart"></i>
               <div class="item_info">
                 <label class="name">Crate of Rotten Tomatoes</label>

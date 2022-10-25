@@ -66,10 +66,9 @@ router.get('/', (req, res) => {
   // Query for all listings
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
-    let temp = {listings : listingsData}
-    console.log(temp);
+    const templateVars = {listings : listingsData}
     // Placeholder returning all listings
-    res.render('listings',temp);
+    res.render('listings', templateVars);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

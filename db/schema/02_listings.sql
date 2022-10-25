@@ -9,5 +9,7 @@ CREATE TABLE listings (
   price INTEGER NOT NULL,
   category categories,
   sold_status BOOLEAN DEFAULT false,
-  active_status VARCHAR(10) DEFAULT 'active'
+  active_status VARCHAR(10) DEFAULT 'active',
+  photo_url TEXT,
+  featured BOOLEAN DEFAULT false
 );

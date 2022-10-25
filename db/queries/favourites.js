@@ -2,8 +2,8 @@ const db = require("../connection");
 
 const getFavouriteListings = (userID) => {
   return db.query(`
-    SELECT * FROM listings
-    JOIN favourites ON listings.id = listing_id
+    SELECT * FROM favourites
+    JOIN listings ON listing_id = listings.id
     WHERE user_id = $1
     GROUP BY favourites.id`,
     [userID]

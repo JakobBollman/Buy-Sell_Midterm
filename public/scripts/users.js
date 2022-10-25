@@ -21,15 +21,12 @@ $(document).ready(function() {
   //placeholder, my-listings will be whatever we call that link
   $('.listing').on('click', (event) => {
     const listingId = event.currentTarget.id
-    $.ajax({
-      method: 'GET',
-      url: `/listing/${listingId}`
-    })
+    // $.ajax({
+    //   method: 'GET',
+    //   url: `/listings/${listingId}`
+    // })
+    window.location.href = `/listings/${listingId}`;
   })
-
-
-  
-
 
 });
 

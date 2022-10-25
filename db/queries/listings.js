@@ -144,5 +144,4 @@ module.exports = {
   createListing,
   deleteListing,
   markListingSold,
-  getAllUsers
 };

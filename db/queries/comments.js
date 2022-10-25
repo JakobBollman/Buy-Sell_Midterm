@@ -36,3 +36,10 @@ const renderComments = function (comments) {
     $('.comments').append($comment);
   }
 };
+
+
+module.exports =
+{getCommentsById,
+createCommentElement,
+renderComments,
+}

@@ -10,5 +10,6 @@ CREATE TABLE listings (
   category categories,
   sold_status BOOLEAN DEFAULT false,
   active_status VARCHAR(10) DEFAULT 'active',
-  photo_url TEXT
+  photo_url TEXT,
+  featured BOOLEAN DEFAULT false
 );

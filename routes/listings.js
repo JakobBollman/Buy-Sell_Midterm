@@ -6,6 +6,7 @@ router.use(methodOverride('_method'));
 
 const listingsQueries = require('../db/queries/listings');
 const favouritesQueries = require('../db/queries/favourites');
+const usersQueries = require('../db/queries/users');
 // const commentsQueries = require('../db/queries/comments');
 
 // STRETCH Route to see a user's listings
@@ -30,15 +31,22 @@ router.get('/new', (req, res) => {
 // GET /listings/favourites
 router.get('/favourites', (req, res) => {
 
+  const templateVars = {};
+
   // Capture user id from cookie session
   const userID = req.session.user_id;
+
+  // Query for all users
+  usersQueries.getAllUsers()
+  .then(usersData => {
+    templateVars.users = usersData;
+  });
 
   // Query for user's favourite listings
   favouritesQueries.getFavouriteListings(userID)
   .then((favListingsData) => {
-
-    // Placeholder returning all favourite listings
-    res.send(favListingsData);
+    templateVars.favourites = favListingsData;
+    res.render('favourites', templateVars);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });
@@ -63,16 +71,19 @@ router.get('/:id', (req, res) => {
 // GET /listings
 router.get('/', (req, res) => {
   let temp = {}
-  // Query for all listings
-  listingsQueries.getAllUsers()
+
+  // Query for all users
+  usersQueries.getAllUsers()
   .then((UsersData) => {
     temp.users = UsersData;
-  })
+  });
+
+  // Query for all listings
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
     temp.listings = listingsData;
     // Placeholder returning all listings
-    res.render('listings',temp);
+    res.render('listings', temp);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

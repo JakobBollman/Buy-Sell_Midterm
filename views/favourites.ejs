@@ -26,41 +26,19 @@
           <label class="desc">Your Favourite Items From Around Town!</label>
           <div class="favourite_items">
 
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Crate of Rotten Tomatoes</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
+            <%  for(let item of listings){  %>
+              <%  if(item.featured === false){  %>
+                  <div class="listing">
+                    <img src="<%= item.photo_url %>">
+                    <i class="fa-solid fa-heart"></i>
+                    <label class="username"><%= users[(item.owner_id) - 1].name %></label>
+                    <div class="item_info">
+                      <label class="name"><%= item.title %></label>
+                      <label class="cost"><%= item.price %> Gold Coins</label>
+                    </div>
+                  </div>
+                <%  } %>
+            <%  } %>
 
           </div>
         </section>

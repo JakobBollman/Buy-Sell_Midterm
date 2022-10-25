@@ -54,6 +54,12 @@ const getAllListings = (options) => {
     }
   }
 
+  //this is intended to check if any options have been entered, and then add WHERE or AND to filter out deleted listings. need to check on whether 'active' needs single quotes. Should apply on every instance of the query
+  if (queryParams.length === 1) {
+    queryString += `WHERE active_status = active`;
+  } else {
+    queryString += `AND active_status = active`;
+  }
   queryString += `
   GROUP BY listings.id
   ORDER BY price
@@ -92,11 +98,8 @@ const getFavouriteListings = (userId) => {
     WHERE user_id = $1;`,
     [userId]
   )
-  .then(data => {
-    return data.rows
-  })
-  .catch(err => {
-    return err.message;
+  .then (data => {
+    return data.rows;
   });
 };
 
@@ -133,7 +136,12 @@ const createListing = (listingAttributes) => {
     return err.message;
   });
 }
-
+const getMyListings = (userID) => {
+  return db.query(`SELECT * FROM listings WHERE owner_id = ${userID}`)
+  .then((data) => {
+    return data.rows;
+  })
+}
 const markListingSold = (id) => {
   return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *', [id])
   .then(data => {
@@ -158,7 +166,7 @@ const deleteListing = (id) => {
 module.exports = {
   getAllListings,
   getListing,
-  getFavouriteListings,
+  getMyListings,
   createListing,
   deleteListing,
   markListingSold,

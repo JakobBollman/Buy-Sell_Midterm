@@ -15,23 +15,38 @@
     <div class="img_div">
       <img src="/images/Logo_Torch.png">
     </div>
+
     <div class="navMiddle">
       <div class="topMid">
-        <label>My Listings</label>
-        <label>Favourites</label>
-        <label>Create New Listing</label>
+
+        <form class="my_listings" action="/listings/my_listings" method="get">
+          <button type="submit">My Listings</button>
+        </form>
+
+        <form class="favourites" action="/listings/favourites" method="get">
+          <button type="submit">Favourites</button>
+        </form>
+
+        <form class="new_listing" action="/listings/new_listing" method="get">
+          <button type="submit">Create New Listing</button>
+        </form>
+
       </div>
+
       <div class="title">
-        <span class='title'>Medieval Marketplace</span>
+        <form class="title" action="/listings" method="get">
+          <button type="submit">Medieval Marketplace</button>
+        </form>
       </div>
+
     </div>
 
     <div class="buttons">
-      <form class="login" action="login" method="get">
+      <form class="login" action="/users/login" method="get">
         <button type="submit">Login</button>
       </form>
 
-      <form class="register" action="/register" method="get">
+      <form class="register" action="/users/register" method="get">
         <button type="submit">Register</button>
       </form>
   </div>

@@ -62,11 +62,15 @@ router.get('/:id', (req, res) => {
 
 // GET /listings
 router.get('/', (req, res) => {
-
+  let temp = {}
   // Query for all listings
+  listingsQueries.getAllUsers()
+  .then((UsersData) => {
+    temp.users = UsersData;
+  })
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
-    let temp = {listings : listingsData}
+    temp.listings = listingsData;
     // Placeholder returning all listings
     res.render('listings',temp);
   })

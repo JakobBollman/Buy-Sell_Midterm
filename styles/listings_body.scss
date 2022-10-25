@@ -87,7 +87,7 @@ section.item_body div.favourite_items {
 section.item_body div.listing {
   display: flex;
   position: relative;
-  height: 400px;
+  height: 450px;
   width: 300px;
   border: 3px solid rgb(150, 0, 0);
   flex-direction: column;
@@ -104,14 +104,25 @@ section.item_body img {
   display: flex;
   height: 350px;
   width: 300px;
-  border: px solid black;
+  margin-bottom: 4em;
 }
 
 section.item_body div.item_info {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
 
+section.item_body label.username {
+  display: flex;
+  font-size: 32px;
+  font-family: 'Yellowtail','Sans-serif';
+  color: white;
+  margin-right: 1em;
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+  border-bottom: 2px solid white;
 }
 
 section.item_body label.name {

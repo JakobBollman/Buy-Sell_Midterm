@@ -15,6 +15,28 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/my_listings', (req, res) => {
+
+  // Query for all listings
+  listingQueries.getListings(req.query)
+  .then((listingsData) => {
+
+    // Placeholder returning all listings
+    res.render('my_listings',listingsData);
+  });
+});
+
+router.get('/new_listing', (req, res) => {
+
+  // Query for all listings
+  listingQueries.getListings(req.query)
+  .then((listingsData) => {
+
+    // Placeholder returning all listings
+    res.render('new_listing',listingsData);
+  });
+});
+
 
 // GET /listings/favourites
 router.get('/favourites', (req, res) => {
@@ -27,7 +49,7 @@ router.get('/favourites', (req, res) => {
   .then((favListingsData) => {
 
     // Placeholder returning all favourite listings
-    res.send(favListingsData);
+    res.render('favourites',favListingsData);
   })
 });
 

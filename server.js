@@ -7,7 +7,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 const app = express();
 
 app.set('view engine', 'ejs');

@@ -56,9 +56,9 @@ const getAllListings = (options) => {
 
   //this is intended to check if any options have been entered, and then add WHERE or AND to filter out deleted listings. need to check on whether 'active' needs single quotes. Should apply on every instance of the query
   if (queryParams.length === 1) {
-    queryString += `WHERE active_status = active`;
+    queryString += `WHERE active_status = 'active'`;
   } else {
-    queryString += `AND active_status = active`;
+    queryString += `AND active_status = 'active'`;
   }
   queryString += `
   GROUP BY listings.id
@@ -87,19 +87,6 @@ const getListing = (id) => {
   })
   .catch(err => {
     return err.message;
-  });
-};
-
-
-const getFavouriteListings = (userId) => {
-  return db.query(`
-    SELECT * FROM listings
-    JOIN favourites ON listings.id = listing_id
-    WHERE user_id = $1;`,
-    [userId]
-  )
-  .then (data => {
-    return data.rows;
   });
 };
 
@@ -136,26 +123,33 @@ const createListing = (listingAttributes) => {
     return err.message;
   });
 }
+
+
 const getMyListings = (userID) => {
-  return db.query(`SELECT * FROM listings WHERE owner_id = ${userID}`)
+  return db.query(`SELECT * FROM listings WHERE owner_id = ${userID};`)
   .then((data) => {
     return data.rows;
   })
 }
+
+
 const markListingSold = (id) => {
-  return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *', [id])
+  return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *;', [id])
   .then(data => {
-    return;
+    return data;
   })
   .catch(err => {
     return err.message;
   });
 }
 
+
 const deleteListing = (id) => {
-  return db.query('UPDATE TABLE listings SET active_status = deleted WHERE id = $1 RETURNING *', [id])
-  .then((data) => {
-    return;
+  return db.query(`UPDATE listings
+  SET active_status='deleted'
+  WHERE id = $1 RETURNING *;`, [id])
+  .then(data => {
+    return data;
   })
   .catch(err => {
     return err.message;

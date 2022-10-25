@@ -5,19 +5,20 @@ const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
 
 const listingsQueries = require('../db/queries/listings');
+const favouritesQueries = require('../db/queries/favourites');
 // const commentsQueries = require('../db/queries/comments');
 
 // STRETCH Route to see a user's listings
-router.get('/my_listings', (req, res) => {
+// router.get('/my_listings', (req, res) => {
 
-  // Query for all listings
-  listingQueries.getListings(req.query)
-  .then((listingsData) => {
+//   // Query for all listings
+//   listingQueries.getListings(req.query)
+//   .then((listingsData) => {
 
-    // Placeholder returning all listings
-    res.render('my_listings',listingsData);
-  });
-});
+//     // Placeholder returning all listings
+//     res.render('my_listings',listingsData);
+//   });
+// });
 
 
 // GET /listings/new
@@ -93,30 +94,30 @@ router.post('/:id', (req, res) => {
 
 
 // PATCH /listings/:id/fav
-// To be integrated to favourites queries (TS working on)
-/*
 router.patch('/:id/fav', (req, res) => {
 
   // Capture listing id and user id
-  const listingID = req.params.id;
-  const userID = req.session.user_id;
+  // const listingID = req.params.id;
+  // const userID = req.session.user_id;
+  const listingID = req.body.list;  //FOR CURL TESTING
+  const userID = req.body.use;      //FOR CURL TESTING
 
-  // Query to mark listing as favourite
-  favouritesQueries.markListingFavourite(listingID, userID)
-  .then(() => {
-    return;
+  // Query to add listing to favourites
+  favouritesQueries.addToFavourites(listingID, userID)
+  .then(data => {
+
   })
-  .catch((errorMessage) => res.send(errorMessage));
+  .catch(errorMessage => res.send(errorMessage));
 
 });
-*/
 
 
-router.use((req, res) => {
-  if (req.session.user_id !== 'admin') {
-    res.send('Please log in as admin');
-  }
-});
+// Admin cookie session check
+// router.use((req, res) => {
+//   if (req.session.user_id !== 'admin') {
+//     res.send('Please log in as admin');
+//   }
+// });
 
 
 // POST /listings (create new listing)
@@ -144,7 +145,7 @@ router.patch('/:id/sold', (req, res) => {
 
   // Query to mark listing as sold
   favouritesQueries.markListingSold(listingID)
-  .then(() => {
+  .then(data => {
     return;
   })
   .catch((errorMessage) => res.send(errorMessage));
@@ -159,7 +160,7 @@ router.delete('/:id', (req, res) => {
 
   // Query to mark listing as deleted
   listingsQueries.deleteListing(listingID)
-  .then(() => {
+  .then(data => {
     // Placeholder
     res.redirect('/listings');
   })

@@ -5,11 +5,14 @@ const getFavouriteListings = (userID) => {
     SELECT * FROM listings
     JOIN favourites ON listings.id = listing_id
     WHERE user_id = $1
-    GROUP BY listing_id;`,
+    GROUP BY favourites.id`,
     [userID]
   )
   .then (data => {
     return data.rows;
+  })
+  .catch(err => {
+    return err.message;
   });
 };
 
@@ -20,9 +23,13 @@ const addToFavourites = (userID, listingID) => {
     VALUES (${userID}, ${listingID});
   `)
   .then (data => {
-    return data.rows;
+    return data;
+  })
+  .catch(err => {
+    return err.message;
   });
 };
+
 
 const removeFromFavourites = (userID, listingID) => {
   return db.query(`DELETE FROM favourites WHERE user_id = ${userID} AND listing_id = ${listingID}`)
@@ -31,5 +38,8 @@ const removeFromFavourites = (userID, listingID) => {
   });
 };
 
-module.exports
-{getFavouriteListings, addToFavourites, removeFromFavourites}
+module.exports = {
+  getFavouriteListings,
+  addToFavourites,
+  removeFromFavourites,
+};

@@ -1,0 +1,72 @@
+main.container {
+  display: flex;
+  height:auto;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  flex-direction: column;
+  background-color: rgb(200,200,200);
+}
+
+section.new-listing{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 3px solid black;
+  margin-top: 50px;
+}
+
+section.new-listing header {
+  display: flex;
+  font-size: 64px;
+  font-family: 'Yellowtail','PT Sans Narrow';
+  margin-top: 0.5em;
+}
+
+section.new-listing label.desc {
+  display: flex;
+  font-size: 16px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-bottom: 1em;
+}
+
+section.new-listing form{
+  display: flex;
+  flex-direction: column;
+}
+
+section.new-listing textarea{
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  width: 30vw;
+  height: 1.5em;
+  resize: none;
+  border: 0 none;
+  background: transparent;
+  outline: none;
+  border-bottom: 0.2em solid black;
+  margin: 0.5em;
+}
+
+section.new-listing #listing-price{
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  width: 30vw;
+  height: 1.5em;
+  resize: none;
+  border: 0 none;
+  background: transparent;
+  outline: none;
+  border-bottom: 0.2em solid black;
+  margin: 0.5em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

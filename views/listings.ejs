@@ -51,41 +51,18 @@
           <label class="desc">The Hottest New Items From Around The Village!</label>
           <div class="featured_items">
 
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Crate of Rotten Tomatoes</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
+            <%  for(let item of listings){  %>
+              <%  if(item.featured === true){  %>
+                <div class="listing">
+                  <img src="<%= item.url %>"
+                  <i class="fa-solid fa-heart"></i>
+                  <div class="item_info">
+                    <label class="name"><%= item.title %></label>
+                    <label class="cost"><%= item.price %> Gold Coins</label>
+                  </div>
+                </div>
+              <%  } %>
+            <%  } %>
 
           </div>
         </section>
@@ -95,113 +72,18 @@
           <label class="desc">Find Items Sold By People Near You!</label>
           <div class="all_items">
 
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Crate of Rotten Tomatoes</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Torch A</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
-
-            <div class="listing">
-              <img src="/images/Torch-A.png">
-              <i class="fa-solid fa-heart"></i>
-              <div class="item_info">
-                <label class="name">Crate of Rotten Tomatoes</label>
-                <label class="cost">10 Gold Coins</label>
-              </div>
-            </div>
+          <%  for(let item of listings){  %>
+            <%  if(item.featured === true){  %>
+                <div class="listing">
+                  <img src="<%= item.url %>">
+                  <i class="fa-solid fa-heart"></i>
+                  <div class="item_info">
+                    <label class="name"><%= item.title %></label>
+                    <label class="cost"><%= item.price %> Gold Coins</label>
+                  </div>
+                </div>
+              <%  } %>
+          <%  } %>
 
           </div>
         </section>

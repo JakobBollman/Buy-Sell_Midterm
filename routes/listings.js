@@ -6,7 +6,8 @@ router.use(methodOverride('_method'));
 
 const listingsQueries = require('../db/queries/listings');
 const favouritesQueries = require('../db/queries/favourites');
-// const commentsQueries = require('../db/queries/comments');
+const userQueries = require('../db/queries/users')
+const commentQueries = require('../db/queries/comments');
 
 // STRETCH Route to see a user's listings
 // router.get('/my_listings', (req, res) => {
@@ -64,7 +65,7 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   let temp = {}
   // Query for all listings
-  listingsQueries.getAllUsers()
+  userQueries.getAllUsers()
   .then((UsersData) => {
     temp.users = UsersData;
   })

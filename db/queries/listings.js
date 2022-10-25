@@ -34,11 +34,11 @@ const getAllListings = (options) => {
   if (options.category) {
     queryParams.push(options.category);
     queryString += `AND category = $${queryParams.length} `;
-    }
+  }
 
   queryString += `
   GROUP BY listings.id
-  ORDER BY price
+  ORDER BY price;
   `;
 
   return db.query(queryString, queryParams)
@@ -110,7 +110,9 @@ const getMyListings = (userID) => {
 
 
 const markListingSold = (id) => {
-  return db.query('UPDATE TABLE listings SET sold_status = true WHERE id = $1 RETURNING *;', [id])
+  return db.query(`UPDATE listings
+  SET sold_status = true
+  WHERE id = $1 RETURNING *;`, [id])
   .then(data => {
     return data;
   })

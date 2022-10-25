@@ -23,7 +23,7 @@ const addToFavourites = (userID, listingID) => {
     VALUES (${userID}, ${listingID});
   `)
   .then (data => {
-    return data;
+    return data.rows;
   })
   .catch(err => {
     return err.message;
@@ -32,9 +32,16 @@ const addToFavourites = (userID, listingID) => {
 
 
 const removeFromFavourites = (userID, listingID) => {
-  return db.query(`DELETE FROM favourites WHERE user_id = ${userID} AND listing_id = ${listingID}`)
+  return db.query(`
+  DELETE FROM favourites
+  WHERE user_id = ${userID}
+  AND listing_id = ${listingID};
+  `)
   .then (data => {
     return data.rows;
+  })
+  .catch(err => {
+    return err.message;
   });
 };
 

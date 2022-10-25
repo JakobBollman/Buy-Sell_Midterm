@@ -50,12 +50,7 @@ const getAllListings = (options) => {
   });
 };
 
-const getAllUsers = () => {
-  return db.query(`SELECT * FROM users`)
-  .then(users => {
-    return users.rows
-  })
-};
+
 const getListing = (id) => {
   return db.query(`
     SELECT * FROM listings
@@ -80,6 +75,7 @@ const createListing = (listingAttributes) => {
     description,
     price,
     category,
+    photo_url
   } = listingAttributes;
 
   // Place variables into array in correct order
@@ -89,11 +85,12 @@ const createListing = (listingAttributes) => {
     description,
     price,
     category,
+    photo_url
   ];
 
   // Pass array to insertion query
-  return db.query(`INSERT INTO listings (owner_id, title, description, price, category)
-  VALUES ($1, $2, $3, $4, $5)
+  return db.query(`INSERT INTO listings (owner_id, title, description, price, category, photo_url)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *;`,
   queryParams
   )
@@ -147,5 +144,4 @@ module.exports = {
   createListing,
   deleteListing,
   markListingSold,
-  getAllUsers
 };

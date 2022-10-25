@@ -50,7 +50,12 @@ const getAllListings = (options) => {
   });
 };
 
-
+const getAllUsers = () => {
+  return db.query(`SELECT * FROM users`)
+  .then(users => {
+    return users.rows
+  })
+};
 const getListing = (id) => {
   return db.query(`
     SELECT * FROM listings
@@ -142,4 +147,5 @@ module.exports = {
   createListing,
   deleteListing,
   markListingSold,
+  getAllUsers
 };

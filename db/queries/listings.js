@@ -57,9 +57,9 @@ const getAllListings = (options) => {
 
   //this is intended to check if any options have been entered, and then add WHERE or AND to filter out deleted listings. need to check on whether 'active' needs single quotes. Should apply on every instance of the query
   if (queryParams.length === 1) {
-    queryString += `WHERE active_status = active`;
+    queryString += `WHERE active_status = 'active'`;
   } else {
-    queryString += `AND active_status = active`;
+    queryString += `AND active_status = 'active'`;
   }
   queryString += `
   GROUP BY listings.id

@@ -5,7 +5,7 @@ const getFavouriteListings = (userID) => {
     SELECT * FROM listings
     JOIN favourites ON listings.id = listing_id
     WHERE user_id = $1
-    GROUP BY listing_id;`,
+    GROUP BY favourites.id`,
     [userID]
   )
   .then (data => {

@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(() => {
 
   // EXAMPLE LISTENER TO BE DELETED------------------------------

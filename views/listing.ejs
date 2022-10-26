@@ -33,27 +33,37 @@
               <label class="ft">FEATURED</label>
             <% } %>
           </div>
-          <label class="user"><%= users[(listing.owner_id) - 1].name %></label>
-          <label class="desc"><%= listing.description %></label>
-          <label class="price"><%= listing.price %> Gold Coins</label>
+          <div class="info-bottom">
+            <label class="user"><%= users[(listing.owner_id) - 1].name %></label>
+            <label class="desc"><%= listing.description %></label>
+            <label class="price"><%= listing.price %> Gold Coins</label>
+          </div>
+          <section class="comments">
+            <header>Comments</header>
+
+            <% if(comments.length < 1) { %>
+              <label class="empty">No Comments, Write one yourself!</label>
+            <% } %>
+            <div class="comments-box">
+              <% for(let item of comments) { %>
+                <div class="comment">
+                  <label class="user"><%= users[item.user_id - 1].name%></label>
+                  <label class="content"><%= item.content%></label>
+                </div>
+              <% } %>
+            </div>
+            <div class="new-comment">
+              <form id="create-comment">
+                <textarea name="new-comment" id="new-comment" placeholder="What would you like to say?"></textarea>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+            </div>
+
+          </section>
         </section>
       </section>
-      <section class="comments">
-        <header>Comments</header>
 
-        <% if(comments.length < 1) { %>
-          <label class="empty">No Comments</label>
-        <% } %>
-
-        <% for(let item of comments) { %>
-          <div class="comment">
-            <label><%= users[item.user_id - 1].name%></label>
-            <label><%= item.content%></label>
-          </div>
-
-        <% } %>
-
-      </section>
 
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

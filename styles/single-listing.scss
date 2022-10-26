@@ -7,13 +7,11 @@ main.container {
   margin-top: 200px;
   background-color: rgb(200,200,200);
   flex-direction: column;
-  border: 2px solid purple;
 }
 
 section.main-section {
   display: flex;
   flex-direction: row;
-  border: 2px solid blue;
 }
 
 section.img img{
@@ -21,7 +19,6 @@ section.img img{
   height: 500px;
   width: 500px;
   margin: 2em;
-  border: 2px solid green;
 }
 
 section.info {
@@ -29,7 +26,6 @@ section.info {
   width: 60vw;
   flex-direction: column;
   align-items: center;
-  border: 2px solid rgb(150, 0, 0);
   margin-left: 2em;
   margin-right: 2em;
   position: relative;
@@ -39,6 +35,13 @@ div.info-top {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+div.info-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
 }
 
 label.ft {
@@ -85,8 +88,11 @@ section.comments{
   display: flex;
   height: auto;
   flex-direction: column;
-  border: 2px solid pink;
+  align-items: flex-start;
+  align-self: flex-start;
 }
+
+
 
 section.comments header{
   display: flex;
@@ -96,21 +102,36 @@ section.comments header{
   border-bottom: 1px solid black;
 }
 
+section.comments .empty{
+  display: flex;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  font-size: 18px;
+  margin: 0.5em 0 0 1em;
+}
+
 section.comments div.comment{
   display: flex;
   height: auto;
+  width: 500px;
   flex-direction: column;
   font-family: 'PT Sans Narrow','Sans-serif';
   font-size: 24px;
   margin: 0.5em 0 0.5em 0.5em;
-  border: 1px solid black;
+  border: 2px solid black;
+  align-items: flex-start;
+  padding: 0.5em;
 }
 
+section.comments div.comment .user{
+  display: flex;
+  font-family: 'Yellowtail','PT Sans Narrow';
+  font-size: 18px;
+  border-bottom: 1px solid black;
+}
 
+section.comments div.comment .content{
+  display: flex;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  font-size: 24px;
 
-
-
-
-
-
-
+}

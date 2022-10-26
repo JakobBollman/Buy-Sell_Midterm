@@ -1,4 +1,4 @@
-const comments = require("../../db/queries/comments");
+
 
 
 $(document).ready(() => {
@@ -52,7 +52,7 @@ $(document).ready(() => {
       data: newCommentData
     })
     .then(() => {
-      comments.createNewComment()
+      // comments.createNewComment()
       renderComments()
       $('textarea').val("").trigger("input") //'textarea' is placeholder, this will reset input
     })
@@ -63,7 +63,6 @@ $(document).ready(() => {
 
 
 });
-
 
 //takes new comments and converts to safe text
 const safeText = function (str) {

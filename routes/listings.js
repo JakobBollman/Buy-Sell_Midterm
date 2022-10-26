@@ -105,7 +105,7 @@ router.get('/', (req, res) => {
 
 // POST /listings/:id (post comment)
 // To be integrated to comments queries (TS working on)
-/*
+
 router.post('/:id', (req, res) => {
 
   // Capture listing, user and comment (verify <form name= >)
@@ -113,13 +113,13 @@ router.post('/:id', (req, res) => {
   const userID = req.session.user_id;
   const commentContent = req.body.comment;
 
-  commentsQueries.createComment(listingID, userID, commentContent)
+  commentsQueries.createNewComment(listingID, userID, commentContent)
   .then((postedComment) => {
     res.send(postedComment);
   })
   .catch((errorMessage) => res.send(errorMessage));
 })
-*/
+
 
 
 // POST /listings/:id/favourite

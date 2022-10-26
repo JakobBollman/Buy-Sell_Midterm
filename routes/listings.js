@@ -122,12 +122,12 @@ router.post('/:id/favourite', (req, res) => {
 
   // Capture listing id and user id
   const listingID = req.params.id;
-  const userID = req.session.user_id;
+  const userID = req.session.user_id || 1;
 
   // Query to add listing to favourites
-  favouritesQueries.addToFavourites(listingID, userID)
+  favouritesQueries.addToFavourites(userID, listingID)
   .then(data => {
-    res.status(200);
+    res.json(data);
   })
   .catch(errorMessage => res.send(errorMessage));
 
@@ -141,10 +141,10 @@ router.delete('/:id/favourite', (req, res) => {
   const listingID = req.params.id;
   const userID = req.session.user_id;
 
-  // Query to add listing to favourites
-  favouritesQueries.removeFromFavourites(listingID, userID)
+  // Query to remove listing from favourites
+  favouritesQueries.removeFromFavourites(userID, listingID)
   .then(data => {
-    res.status(200);
+    res.json(data);
   })
   .catch(errorMessage => res.send(errorMessage));
 

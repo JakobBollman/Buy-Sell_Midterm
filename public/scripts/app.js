@@ -1,3 +1,5 @@
+
+
 $(document).ready(() => {
 
   // EXAMPLE LISTENER TO BE DELETED------------------------------
@@ -27,24 +29,27 @@ $(document).ready(() => {
     window.location.href = `/listings/${listingId}`;
   });
 
+
   $('.fa-heart').on('click', function(event) {
 
-    // Stop listing click event from triggering
+    // Prevent listing click event from triggering
     event.stopPropagation();
 
-    $(this).addClass('favourited');
-    // alert('heart clickeed');   //FOR DEVELOPMENT
+    // Capture listing id
+    const listingID = $(this).parent().attr('id');
 
-    // Request to add to favourites
-    // $.post('/listings/:id/favourite', )
-
-
-
-
-
+    // AJAX request to add to favourites
+    $.post(`/listings/${listingID}/favourite`)
+    .then((data) => {
+      // Change heart icon to red
+      $(this).addClass('favourited');
+    });
   })
 
-});
+
+
+  
+ });
 
 
 

@@ -19,12 +19,9 @@ const getFavouriteListings = (userID) => {
 
 
 const addToFavourites = (userID, listingID) => {
-  return db.query(`
-    INSERT INTO favourites (user_id, listing_id)
-    VALUES (${userID}, ${listingID});
-  `)
+  return db.query('INSERT INTO favourites (user_id, listing_id) VALUES ($1, $2) RETURNING *', [userID, listingID])
   .then (data => {
-    return data.rows;
+    return data.rows[0];
   })
   .catch(err => {
     return err.message;

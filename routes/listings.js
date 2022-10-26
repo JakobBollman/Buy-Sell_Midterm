@@ -44,6 +44,7 @@ router.get('/favourites', (req, res) => {
     templateVars.users = usersData;
   });
 
+
   // Query for user's favourite listings
   favouritesQueries.getFavouriteListings(userID)
   .then((favListingsData) => {
@@ -57,11 +58,9 @@ router.get('/favourites', (req, res) => {
 // GET /listings/:id
 router.get('/:id', (req, res) => {
   // Capture listing id
-
   const listingID = req.params.id;
 
   let temp = {};
-  console.log(listingID);
 
   commentsQueries.getCommentsById(listingID)
   .then((commentData) => {
@@ -72,9 +71,7 @@ router.get('/:id', (req, res) => {
   listingsQueries.getListing(listingID)
   .then((listingData) => {
     temp.listing = listingData;
-    console.log(temp);
-
-    res.render('listing',temp);
+    res.render('listing', temp);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

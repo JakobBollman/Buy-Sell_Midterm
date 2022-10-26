@@ -2,7 +2,7 @@ const db = require("../connection");
 
 const getFavouriteListings = (userID) => {
   return db.query(`
-  SELECT listings.id, title, description, price, category, sold_status
+  SELECT listings.id, title, description, price, category, sold_status, owner_id, photo_url
   FROM listings
   JOIN favourites ON listing_id = listings.id
   WHERE user_id = $1

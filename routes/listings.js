@@ -44,6 +44,7 @@ router.get('/favourites', (req, res) => {
     templateVars.users = usersData;
   });
 
+
   // Query for user's favourite listings
   favouritesQueries.getFavouriteListings(userID)
   .then((favListingsData) => {

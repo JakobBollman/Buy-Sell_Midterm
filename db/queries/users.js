@@ -5,7 +5,12 @@ const getAllUsers = () => {
   .then(users => {
     return users.rows
   })
+  .catch(err => {
+    return err.message;
+  });
 };
+
+
 
 
 module.exports = {getAllUsers};

@@ -74,7 +74,7 @@ router.get('/:id', (req, res) => {
     temp.listing = listingData;
     console.log(temp);
 
-    res.render('listings-index',temp);
+    res.render('listing',temp);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });
@@ -94,7 +94,7 @@ router.get('/', (req, res) => {
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
     temp.listings = listingsData;
-    
+
     res.render('listings', temp);
   })
   .catch((errorMessage) => res.send(errorMessage));

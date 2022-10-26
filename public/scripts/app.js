@@ -27,6 +27,70 @@ $(document).ready(() => {
     window.location.href = `/listings/${listingId}`;
   });
 
+
+
+
+  // Listener on heart icon to add/remove from favourites
+  $('.fa-heart').on('click', function(event) {
+
+    // console.log(this)
+    // console.log($(this))
+    // event.stopPropagation();
+
+    if ($(this).hasClass('favourited')) {
+
+      // Remove from favourites
+      // Prevent listing click event from triggering
+      event.stopPropagation();
+
+      // Capture listing
+      const listing = $(this).parent();
+
+      // Capture listing id
+      const listingID = listing.attr('id');
+
+      // AJAX request to remove from favourites
+      $.ajax({
+        url: `/listings/${listingID}/favourite`,
+        method: 'delete',
+      })
+      .then((data) => {
+        // Change heart icon to red
+        $(this).removeClass('favourited');
+
+        // If on favourites page, fade out and remove listing from DOM
+        if (window.location.pathname === '/listings/favourites') {
+          listing.fadeOut(450, () => listing.detach());
+        }
+      });
+
+    } else {
+
+      // Add to favourites
+      // Prevent listing click event from triggering
+      event.stopPropagation();
+
+      // Capture listing id
+      const listingID = $(this).parent().attr('id');
+
+      // AJAX request to add to favourites
+      $.post(`/listings/${listingID}/favourite`)
+      .then((data) => {
+        // Change heart icon to red
+        $(this).addClass('favourited');
+      });
+    }
+
+
+
+  });
+
+
+
+
+
+
+
   // // Listener to ADD to favourites (will be replaced by a toggling system)
   // $('.fa-heart').on('click', function(event) {
 
@@ -42,41 +106,38 @@ $(document).ready(() => {
   //     // Change heart icon to red
   //     $(this).addClass('favourited');
   //   });
-
   // });
 
-  // Listener to REMOVE from favourites (will be replaced by toggling feature)
-  $('.fa-heart').on('click', function(event) {
 
 
-    // Prevent listing click event from triggering
-    event.stopPropagation();
 
-    // Capture listing
-    const listing = $(this).parent();
+  // // Listener to REMOVE from favourites (will be replaced by toggling feature)
+  // $('.fa-heart').on('click', function(event) {
 
-    // Capture listing id
-    const listingID = listing.attr('id');
+  //   // Prevent listing click event from triggering
+  //   event.stopPropagation();
 
-    // AJAX request to remove from favourites
-    $.ajax({
-      url: `/listings/${listingID}/favourite`,
-      method: 'delete',
-    })
-    .then((data) => {
-      // Change heart icon to red
-      $(this).removeClass('favourited');
-      
-      // Fade out and remove from DOM
-      listing.fadeOut(450, () => listing.detach());
-    });
+  //   // Capture listing
+  //   const listing = $(this).parent();
 
-  });
+  //   // Capture listing id
+  //   const listingID = listing.attr('id');
+
+  //   // AJAX request to remove from favourites
+  //   $.ajax({
+  //     url: `/listings/${listingID}/favourite`,
+  //     method: 'delete',
+  //   })
+  //   .then((data) => {
+  //     // Change heart icon to red
+  //     $(this).removeClass('favourited');
+
+  //     // Fade out and remove from DOM
+  //     listing.fadeOut(450, () => listing.detach());
+  //   });
+  // });
 
 
 
 
 });
-
-
-

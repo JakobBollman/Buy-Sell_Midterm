@@ -139,7 +139,7 @@ router.delete('/:id/favourite', (req, res) => {
 
   // Capture listing id and user id
   const listingID = req.params.id;
-  const userID = req.session.user_id || 8;
+  const userID = req.session.user_id;
 
   // Query to remove listing from favourites
   favouritesQueries.removeFromFavourites(userID, listingID)

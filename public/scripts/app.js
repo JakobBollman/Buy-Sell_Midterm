@@ -1,4 +1,4 @@
-const comments = require("../../db/queries/comments");
+//const comments = require("../../db/queries/comments");
 
 
 $(document).ready(() => {

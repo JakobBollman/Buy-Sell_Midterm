@@ -27,6 +27,23 @@ $(document).ready(() => {
     window.location.href = `/listings/${listingId}`;
   });
 
+  $('.fa-heart').on('click', function(event) {
+
+    // Stop listing click event from triggering
+    event.stopPropagation();
+
+    $(this).addClass('favourited');
+    // alert('heart clickeed');   //FOR DEVELOPMENT
+
+    // Request to add to favourites
+    // $.post('/listings/:id/favourite', )
+
+
+
+
+
+  })
+
 });
 
 

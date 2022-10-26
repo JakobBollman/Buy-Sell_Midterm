@@ -117,17 +117,32 @@ router.post('/:id', (req, res) => {
 */
 
 
-// PATCH /listings/:id/fav
-router.patch('/:id/fav', (req, res) => {
+// POST /listings/:id/favourite
+router.post('/:id/favourite', (req, res) => {
 
   // Capture listing id and user id
-  // const listingID = req.params.id;
-  // const userID = req.session.user_id;
-  const listingID = req.body.list;  //FOR CURL TESTING
-  const userID = req.body.user;      //FOR CURL TESTING
+  const listingID = req.params.id;
+  const userID = req.session.user_id;
 
   // Query to add listing to favourites
   favouritesQueries.addToFavourites(listingID, userID)
+  .then(data => {
+    res.status(200);
+  })
+  .catch(errorMessage => res.send(errorMessage));
+
+});
+
+
+// DELETE /listings/:id/favourite
+router.delete('/:id/favourite', (req, res) => {
+
+  // Capture listing id and user id
+  const listingID = req.params.id;
+  const userID = req.session.user_id;
+
+  // Query to add listing to favourites
+  favouritesQueries.removeFromFavourites(listingID, userID)
   .then(data => {
     res.status(200);
   })

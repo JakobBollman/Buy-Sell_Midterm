@@ -33,6 +33,10 @@ section.item_body i {
   right: 10px;
 }
 
+section.item_body i.favourited{
+  color:#7a0606;
+}
+
 section.item_body i:hover {
   display: flex;
   color: rgb(200,200,200);

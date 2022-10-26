@@ -10,13 +10,9 @@ $(document).ready(() => {
   });
 
 
+
   // Listener on heart icon to add/remove from favourites
   $('.fa-heart').on('click', function(event) {
-
-    // console.log(this)
-    // console.log($(this))
-    // event.stopPropagation();
-
     if ($(this).hasClass('favourited')) {
 
       // Remove from favourites
@@ -59,12 +55,38 @@ $(document).ready(() => {
         // Change heart icon to red
         $(this).addClass('favourited');
       });
-    }
 
+    }
   });
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

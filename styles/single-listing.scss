@@ -1,0 +1,116 @@
+main.container {
+  display: flex;
+  height: auto;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  background-color: rgb(200,200,200);
+  flex-direction: column;
+  border: 2px solid purple;
+}
+
+section.main-section {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid blue;
+}
+
+section.img img{
+  display: flex;
+  height: 500px;
+  width: 500px;
+  margin: 2em;
+  border: 2px solid green;
+}
+
+section.info {
+  display: flex;
+  width: 60vw;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(150, 0, 0);
+  margin-left: 2em;
+  margin-right: 2em;
+  position: relative;
+}
+
+div.info-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+label.ft {
+  display: flex;
+  color: rgb(150, 0, 0);
+  border: 1px solid rgb(150, 0, 0);
+  background-color: #888888;
+  font-size: 32px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+section.info header {
+  display: flex;
+  font-size: 64px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-top: 0.5em;
+  border-bottom: 3px solid black;
+}
+
+section.info label.user {
+  display: flex;
+  font-size: 32px;
+  font-family: 'Yellowtail','PT Sans Narrow';
+  margin-top: 0.5em;
+}
+
+section.info label.desc {
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-top: 0.5em;
+}
+
+section.info label.price {
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-top: 0.5em;
+}
+
+section.comments{
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  border: 2px solid pink;
+}
+
+section.comments header{
+  display: flex;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  font-size: 24px;
+  margin: 0.5em 0 0 0.5em;
+  border-bottom: 1px solid black;
+}
+
+section.comments div.comment{
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  font-size: 24px;
+  margin: 0.5em 0 0.5em 0.5em;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+

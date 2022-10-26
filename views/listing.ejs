@@ -12,34 +12,51 @@
     <link href='https://fonts.googleapis.com/css?family=PT Sans Narrow' rel='stylesheet'>
 
     <!-- CSS CALLS -->
-    <link rel="stylesheet" href="../styles/listings_body.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/single-listing.css" type="text/css" />
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   </head>
   <body>
+
     <%- include('partials/nav') %>
 
     <main class="container">
-
-      <section class="item_body">
-        <section>
-          <header><%= listing.title %></header>
-
-
-
-
-
-
-
-          </div>
+      <section class="main-section">
+        <section class="img">
+          <img src="<%= listing.photo_url %>">
         </section>
+
+        <section class="info">
+          <div class="info-top">
+            <header><%= listing.title %></header>
+            <% if(listing.featured === true) { %>
+              <label class="ft">FEATURED</label>
+            <% } %>
+          </div>
+          <label class="user"><%= users[(listing.owner_id) - 1].name %></label>
+          <label class="desc"><%= listing.description %></label>
+          <label class="price"><%= listing.price %> Gold Coins</label>
+        </section>
+      </section>
+      <section class="comments">
+        <header>Comments</header>
+
+        <% if(comments.length < 1) { %>
+          <label class="empty">No Comments</label>
+        <% } %>
+
+        <% for(let item of comments) { %>
+          <div class="comment">
+            <label><%= users[item.user_id - 1].name%></label>
+            <label><%= item.content%></label>
+          </div>
+
+        <% } %>
+
       </section>
 
     </main>
-    
-    <!-- Scripts -->
-    <script type="text/javascript" src="../scripts/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/users.js"></script>
   </body>
 </html>

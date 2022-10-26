@@ -62,6 +62,11 @@ router.get('/:id', (req, res) => {
 
   let temp = {};
 
+  usersQueries.getAllUsers()
+  .then((UsersData) => {
+    temp.users = UsersData;
+  })
+
   commentsQueries.getCommentsById(listingID)
   .then((commentData) => {
     temp.comments = commentData;
@@ -73,7 +78,7 @@ router.get('/:id', (req, res) => {
     temp.listing = listingData;
     res.render('listing', temp);
   })
-  .catch((errorMessage) => res.send(errorMessage));
+  //.catch((errorMessage) => res.send(errorMessage));
 });
 
 

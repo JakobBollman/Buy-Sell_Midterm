@@ -21,14 +21,11 @@ $(document).ready(() => {
 
   // Listener on each listing that redirects to respective page
   $('.listing').on('click', (event) => {
+    // Capture id of the listing that detected click
     const listingId = event.currentTarget.id;
-    alert( listingId);
-    // $.ajax({
-    //   method: 'GET',
-    //   url: `/listings/${listingId}`
-    // })
+    // Redirect to that listing's page
     window.location.href = `/listings/${listingId}`;
-  })
+  });
 
 });
 

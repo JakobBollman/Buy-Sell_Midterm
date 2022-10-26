@@ -32,7 +32,7 @@
 
             <%  for(let item of favourites){  %>
 
-                  <div class="listing">
+                  <div class="listing" id="<%= item.id %>">
                     <img src="<%= item.photo_url %>">
                     <i class="fa-solid fa-heart"></i>
                     <label class="username"><%= users[(item.owner_id) - 1].name %></label>

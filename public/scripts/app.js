@@ -1,4 +1,4 @@
-const { createNewComment } = require("../../db/queries/comments");
+const comments = require("../../db/queries/comments");
 
 
 $(document).ready(() => {
@@ -52,7 +52,7 @@ $(document).ready(() => {
       data: newCommentData
     })
     .then(() => {
-      createNewComment()
+      comments.createNewComment()
       renderComments()
       $('textarea').val("").trigger("input") //'textarea' is placeholder, this will reset input
     })

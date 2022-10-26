@@ -1,3 +1,4 @@
+const { createNewComment } = require("../../db/queries/comments");
 
 
 $(document).ready(() => {
@@ -51,7 +52,8 @@ $(document).ready(() => {
       data: newCommentData
     })
     .then(() => {
-      loadTweets()
+      createNewComment()
+      renderComments()
       $('textarea').val("").trigger("input") //'textarea' is placeholder, this will reset input
     })
     .catch((err) => {

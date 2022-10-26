@@ -32,7 +32,5 @@ const createNewComment = (listingID, userID, comment) => {
 
 module.exports =
 {getCommentsById,
-createCommentElement,
-renderComments,
 createNewComment
 }

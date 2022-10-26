@@ -1,5 +1,3 @@
-
-
 $(document).ready(() => {
 
   // EXAMPLE LISTENER TO BE DELETED------------------------------
@@ -29,27 +27,56 @@ $(document).ready(() => {
     window.location.href = `/listings/${listingId}`;
   });
 
+  // // Listener to ADD to favourites (will be replaced by a toggling system)
+  // $('.fa-heart').on('click', function(event) {
 
+  //   // Prevent listing click event from triggering
+  //   event.stopPropagation();
+
+  //   // Capture listing id
+  //   const listingID = $(this).parent().attr('id');
+
+  //   // AJAX request to add to favourites
+  //   $.post(`/listings/${listingID}/favourite`)
+  //   .then((data) => {
+  //     // Change heart icon to red
+  //     $(this).addClass('favourited');
+  //   });
+
+  // });
+
+  // Listener to REMOVE from favourites (will be replaced by toggling feature)
   $('.fa-heart').on('click', function(event) {
+
 
     // Prevent listing click event from triggering
     event.stopPropagation();
 
-    // Capture listing id
-    const listingID = $(this).parent().attr('id');
+    // Capture listing
+    const listing = $(this).parent();
 
-    // AJAX request to add to favourites
-    $.post(`/listings/${listingID}/favourite`)
+    // Capture listing id
+    const listingID = listing.attr('id');
+
+    // AJAX request to remove from favourites
+    $.ajax({
+      url: `/listings/${listingID}/favourite`,
+      method: 'delete',
+    })
     .then((data) => {
       // Change heart icon to red
-      $(this).addClass('favourited');
+      $(this).removeClass('favourited');
+      
+      // Fade out and remove from DOM
+      listing.fadeOut(450, () => listing.detach());
     });
-  })
+
+  });
 
 
 
-  
- });
+
+});
 
 
 

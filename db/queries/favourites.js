@@ -30,13 +30,9 @@ const addToFavourites = (userID, listingID) => {
 
 
 const removeFromFavourites = (userID, listingID) => {
-  return db.query(`
-  DELETE FROM favourites
-  WHERE user_id = ${userID}
-  AND listing_id = ${listingID};
-  `)
+  return db.query('DELETE FROM favourites WHERE user_id = $1 AND listing_id = $2 RETURNING *', [userID, listingID])
   .then (data => {
-    return data.rows;
+    return data.rows[0];
   })
   .catch(err => {
     return err.message;

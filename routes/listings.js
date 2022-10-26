@@ -7,7 +7,8 @@ router.use(methodOverride('_method'));
 const listingsQueries = require('../db/queries/listings');
 const favouritesQueries = require('../db/queries/favourites');
 const usersQueries = require('../db/queries/users');
-const commentQueries = require('../db/queries/comments');
+const commentsQueries = require('../db/queries/comments');
+
 
 // STRETCH Route to see a user's listings
 // router.get('/my_listings', (req, res) => {
@@ -24,7 +25,8 @@ const commentQueries = require('../db/queries/comments');
 
 // GET /listings/new
 router.get('/new', (req, res) => {
-    res.render('new_listing');
+
+  res.render('new_listing');
 });
 
 
@@ -61,7 +63,7 @@ router.get('/:id', (req, res) => {
   let temp = {};
   console.log(listingID);
 
-  commentQueries.getCommentsById(listingID)
+  commentsQueries.getCommentsById(listingID)
   .then((commentData) => {
     temp.comments = commentData;
   })
@@ -92,7 +94,7 @@ router.get('/', (req, res) => {
   listingsQueries.getAllListings(req.query)
   .then((listingsData) => {
     temp.listings = listingsData;
-    // Placeholder returning all listings
+    
     res.render('listings', temp);
   })
   .catch((errorMessage) => res.send(errorMessage));
@@ -134,14 +136,6 @@ router.patch('/:id/fav', (req, res) => {
   })
   .catch(errorMessage => res.send(errorMessage));
 
-});
-
-
-// Admin cookie session check
-router.use((req, res) => {
-  if (req.session.user_id !== 'admin') {
-    res.send('Please log in as admin');
-  }
 });
 
 

@@ -66,15 +66,10 @@ router.get('/:id', (req, res) => {
     .then((commentData) => {
       listingsQueries.getListing(listingID)
       .then((listingData) => {
-        favouritesQueries.getFavouriteListings(userID)
-        .then((favListingsData) => {
         temp.users = UsersData;
-        temp.favourites = favListingsData;
         temp.comments = commentData;
         temp.listing = listingData;
         res.render('listing', temp);
-        })
-        .catch((errorMessage) => res.send(errorMessage));
       })
       .catch((errorMessage) => res.send(errorMessage));
     })

@@ -191,7 +191,7 @@ router.patch('/:id/sold', (req, res) => {
   const listingID = req.params.id;
 
   // Query to mark listing as sold
-  favouritesQueries.markListingSold(listingID)
+  listingsQueries.markListingSold(listingID)
   .then(data => {
     return;
   })

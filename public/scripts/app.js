@@ -81,6 +81,24 @@ $(document).ready(() => {
       console.log(err)
     })
   })
+
+  //mark listing sold
+  const $soldButton = $('.mark-sold')
+  $soldButton.on('click', function(event) {
+    event.stopPropagation();
+    // Capture listing ID
+    const listingID = $(this).closest('.listing').attr('id');
+    console.log('listing id', listingID);
+
+    $.ajax({
+      method: 'PATCH',
+      url: `/listings/${listingID}/sold`
+    })
+    .then(() => {
+      $(`#${listingID}`).addClass('sold-label')
+    })
+
+  })
 });
 
 //Helper functions below
@@ -110,9 +128,6 @@ const renderComments = function (comment) {
   const $comment = createCommentElement(comment);
   $('.comments-box').append($comment);
 };
-
-
-
 
 
 

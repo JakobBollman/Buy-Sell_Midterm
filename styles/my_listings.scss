@@ -60,6 +60,21 @@ div.listing img {
   border-radius: 1em;
 }
 
+div.listing label.sold-label {
+  display: flex;
+  width: 296px;
+  height: 1.5em;
+  position: absolute;
+  top: 40%;
+  font-size: 40px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 0.2em;
+}
+
 div.listing i{
   display: flex;
   color: white;

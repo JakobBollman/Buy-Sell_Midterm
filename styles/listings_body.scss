@@ -24,6 +24,24 @@ section.item_body section {
   margin-top: 50px;
 }
 
+section.item_body label.sold-label{
+  display: flex;
+  width: 296px;
+  height: 1.5em;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 40px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 0.2em;
+}
+
+
 section.item_body i{
   display: flex;
   color: white;

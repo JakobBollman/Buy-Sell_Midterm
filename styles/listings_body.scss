@@ -24,9 +24,12 @@ section.item_body section {
   margin-top: 50px;
 }
 
-section.item_body i {
+section.item_body i{
   display: flex;
   color: white;
+  background-color: #888888;
+  padding: 3px;
+  border: 2px solid black;
   font-size: 24px;
   position: absolute;
   top: 10px;
@@ -117,29 +120,28 @@ section.item_body div.item_info {
   align-items: center;
 }
 
-section.item_body label.username {
+section.item_body label.name {
   display: flex;
-  font-size: 32px;
-  font-family: 'Yellowtail','Sans-serif';
+  font-size: 30px;
+  font-family: 'PT Sans Narrow','Sans-serif';
   color: white;
-  margin-right: 1em;
   position: absolute;
   bottom: 50px;
   text-align: center;
   border-bottom: 2px solid white;
 }
 
-section.item_body label.name {
+section.item_body label.username {
   display: flex;
   font-size: 20px;
-  font-family: 'PT Sans Narrow','Sans-serif';
+  font-family: 'Yellowtail','Sans-serif';
   color: white;
   margin-right: 1em;
 }
 
 section.item_body label.cost {
   display: flex;
-  font-size: 12px;
+  font-size: 20px;
   color: rgb(200,200,200);
   font-family: 'PT Sans Narrow','Sans-serif';
 }

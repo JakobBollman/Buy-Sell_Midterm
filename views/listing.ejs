@@ -12,34 +12,61 @@
     <link href='https://fonts.googleapis.com/css?family=PT Sans Narrow' rel='stylesheet'>
 
     <!-- CSS CALLS -->
-    <link rel="stylesheet" href="../styles/listings_body.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/single-listing.css" type="text/css" />
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   </head>
   <body>
+
     <%- include('partials/nav') %>
 
     <main class="container">
+      <section class="main-section">
+        <section class="img">
+          <img src="<%= listing.photo_url %>">
+        </section>
 
-      <section class="item_body">
-        <section>
-          <header><%= listing.title %></header>
-
-
-
-
-
-
-
+        <section class="info">
+          <div class="info-top">
+            <header><%= listing.title %></header>
+            <% if(listing.featured === true) { %>
+              <label class="ft">FEATURED</label>
+            <% } %>
           </div>
+          <div class="info-bottom">
+            <label class="user"><%= users[(listing.owner_id) - 1].name %></label>
+            <label class="desc"><%= listing.description %></label>
+            <label class="price"><%= listing.price %> Gold Coins</label>
+          </div>
+          <section class="comments">
+            <header>Comments</header>
+
+            <% if(comments.length < 1) { %>
+              <label class="empty">No Comments, Write one yourself!</label>
+            <% } %>
+            <div class="comments-box">
+              <% for(let item of comments) { %>
+                <div class="comment">
+                  <label class="user"><%= users[item.user_id - 1].name%></label>
+                  <label class="content"><%= item.content%></label>
+                </div>
+              <% } %>
+            </div>
+            <div class="new-comment">
+              <form id="create-comment">
+                <textarea name="new-comment" id="new-comment" placeholder="What would you like to say?"></textarea>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+            </div>
+
+          </section>
         </section>
       </section>
 
+
     </main>
-    
-    <!-- Scripts -->
-    <script type="text/javascript" src="../scripts/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/users.js"></script>
   </body>
 </html>

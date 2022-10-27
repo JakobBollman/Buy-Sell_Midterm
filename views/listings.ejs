@@ -56,18 +56,19 @@
           <div class="featured_items">
 
             <%  for(let item of listings){  %>
-              <%  if(item.featured === true){  %>
-                <%  console.log(item.url)  %>
-                <div class="listing" id="<%= item.id %>">
-                  <img src="<%= item.photo_url %>">
-                  <i class="fa-solid fa-heart"></i>
-                  <label class="username"><%= users[(item.owner_id) - 1].name %></label>
-                  <div class="item_info">
+                <%  if(item.featured === true){  %>
+                  <div class="listing" id="<%= item.id %>">
+                    <img src="<%= item.photo_url %>">
+                    <i class="fa-solid fa-heart"></i>
                     <label class="name"><%= item.title %></label>
-                    <label class="cost"><%= item.price %> Gold Coins</label>
+
+                    <div class="item_info">
+                      <label class="username"><%= users[(item.owner_id) - 1].name %></label>
+                      <label class="cost"><%= item.price %> Gold Coins</label>
+                    </div>
+
                   </div>
-                </div>
-              <%  } %>
+                <%  } %>
             <%  } %>
 
           </div>
@@ -79,13 +80,13 @@
           <div class="all_items" >
 
           <%  for(let item of listings){  %>
-            <%  if(item.featured === false){  %>
+              <%  if(item.featured === false){  %>
                 <div class="listing" id="<%= item.id %>">
                   <img src="<%= item.photo_url %>">
                   <i class="fa-solid fa-heart"></i>
-                  <label class="username"><%= users[(item.owner_id) - 1].name %></label>
+                  <label class="name"><%= item.title %></label>
                   <div class="item_info">
-                    <label class="name"><%= item.title %></label>
+                    <label class="username"><%= users[(item.owner_id) - 1].name %></label>
                     <label class="cost"><%= item.price %> Gold Coins</label>
                   </div>
                 </div>

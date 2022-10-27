@@ -57,17 +57,19 @@ $(document).ready(() => {
     }
   });
 
-
+  //grabs new comment form
   const $form = $('#create-comment')
   $form.on('submit', (event) => {
     event.preventDefault();
     const newCommentData = $form.serialize();
-    console.log('comment-data:', newCommentData)
+
+    //sends post to listings/:id with comment text to be added to db
     $.ajax({
       method: 'POST',
       url: window.location.pathname,
       data: newCommentData
     })
+
     .then((newlyPostedComment) => {
       const newComment = newlyPostedComment;
       console.log('newComment', newComment)
@@ -79,6 +81,8 @@ $(document).ready(() => {
     })
   })
 });
+
+//Helper functions below
 
 //takes new comments and converts to safe text
 const safeText = function (str) {

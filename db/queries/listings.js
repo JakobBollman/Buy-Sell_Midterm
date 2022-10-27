@@ -104,10 +104,13 @@ const createListing = (listingAttributes) => {
 
 
 const getMyListings = (userID) => {
-  return db.query(`SELECT * FROM listings WHERE owner_id = ${userID};`)
+  return db.query(`SELECT users.name, listings.id, owner_id, title, description, price, photo_url FROM listings JOIN users ON users.id = owner_id WHERE owner_id = $1;`, [userID])
   .then((listings) => {
     return listings.rows;
   })
+  .catch(err => {
+    return err.message;
+  });
 }
 
 

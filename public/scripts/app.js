@@ -68,8 +68,9 @@ $(document).ready(() => {
       url: window.location.pathname,
       data: newCommentData
     })
-    .then((res) => {
-      const newComment = res[0].content;
+    .then((newlyPostedComment) => {
+      const newComment = newlyPostedComment;
+      console.log('newComment', newComment)
       renderComments(newComment)
       $('textarea').val("").trigger("input")
     })
@@ -88,10 +89,11 @@ const safeText = function (str) {
 
 //takes safe text and converts to HTML element
 const createCommentElement = function (data) {
+  console.log('data:', data)
   const commentBody = safeText(data.content);
   const result =
   `  <div class="comment">
-      <label class="user">${data.user?.name}</label>
+      <label class="user">${data.name}</label>
       <label class="content">${commentBody}</label>
     </div>
   `

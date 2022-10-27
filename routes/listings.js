@@ -112,20 +112,21 @@ router.get('/', (req, res) => {
 
 router.post('/:id', (req, res) => {
 
-  // Capture listing, user and comment (verify <form name= >)
+  // Capture listing, user and comment
   const listingID = req.params.id;
   console.log('listingID:', listingID)
   const userID = req.session.user_id;
   const commentContent = req.body['new-comment'];
-  console.log('req.data:', req.data)
-  console.log('req.body:', req.body)
 
   commentsQueries.createNewComment(listingID, userID, commentContent)
-  .then((postedComment) => {
-    console.log(postedComment)
-    res.send(postedComment);
+  .then(() => {
+    commentsQueries.getCommentsById(listingID)
+    .then((data) => {
+      console.log('log in route', data)
+      res.send(data[data.length - 1]);
+    })
+    .catch((errorMessage) => res.send(errorMessage));
   })
-  .catch((errorMessage) => res.send(errorMessage));
 })
 
 
@@ -135,7 +136,7 @@ router.post('/:id/favourite', (req, res) => {
 
   // Capture listing id and user id
   const listingID = req.params.id;
-  const userID = req.session.user_id || 1;
+  const userID = req.session.user_id;
 
   // Query to add listing to favourites
   favouritesQueries.addToFavourites(userID, listingID)

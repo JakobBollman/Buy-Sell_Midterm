@@ -193,7 +193,7 @@ router.patch('/:id/sold', (req, res) => {
   // Query to mark listing as sold
   listingsQueries.markListingSold(listingID)
   .then(data => {
-    return;
+    return data;
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

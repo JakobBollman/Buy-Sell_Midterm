@@ -88,20 +88,23 @@ $(document).ready(() => {
     event.stopPropagation();
     // Capture listing ID
     const listingID = $(this).closest('.listing').attr('id');
-    console.log('listing id', listingID);
 
     $.ajax({
       method: 'PATCH',
       url: `/listings/${listingID}/sold`
     })
-    .then(() => {
-      $(`#${listingID}`).addClass('sold-label')
+    .then((listing) => {
+    console.log('inside .then');
+    $(this).hide();
+      // $(`div.listing #${listingID}`).append("<label class='sold-label'>SOLD</label>")
     })
 
   })
 });
 
 //Helper functions below
+
+
 
 //takes new comments and converts to safe text
 const safeText = function (str) {

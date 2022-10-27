@@ -32,7 +32,7 @@
 
               <div class="listing" id="<%= item.id %>">
                 <img src="<%= item.photo_url %>">
-                <%  if(item.sold_status === true){  %>
+                <%  if(item.sold_status){  %>
                   <label class="sold-label">SOLD</label>
                 <%  } %>
                 <i class="fa-solid fa-heart"></i>

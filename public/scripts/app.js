@@ -102,6 +102,8 @@ $(document).ready(() => {
 
 //Helper functions below
 
+
+
 //takes new comments and converts to safe text
 const safeText = function (str) {
   let div = document.createElement("div");

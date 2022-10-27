@@ -104,7 +104,7 @@ const createListing = (listingAttributes) => {
 
 
 const getMyListings = (userID) => {
-  return db.query(`SELECT users.name, listings.id, owner_id, title, description, price, photo_url FROM listings JOIN users ON users.id = owner_id WHERE owner_id = $1 ORDER BY sold_status, id;`, [userID])
+  return db.query(`SELECT users.name, listings.id, owner_id, title, description, price, photo_url, sold_status, active_status FROM listings JOIN users ON users.id = owner_id WHERE owner_id = $1 ORDER BY sold_status, id;`, [userID])
   .then((listings) => {
     return listings.rows;
   })
@@ -117,7 +117,7 @@ const getMyListings = (userID) => {
 const markListingSold = (id) => {
   return db.query(`UPDATE listings
   SET sold_status = true
-  WHERE id = $1 RETURNING *;`, [id])
+  WHERE id = $1;`, [id])
   .then(data => {
     return data.rows[0];
   })

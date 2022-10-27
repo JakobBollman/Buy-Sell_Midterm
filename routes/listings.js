@@ -108,19 +108,21 @@ router.get('/', (req, res) => {
 
 router.post('/:id', (req, res) => {
 
-  // Capture listing, user and comment (verify <form name= >)
+  // Capture listing, user and comment
   const listingID = req.params.id;
   console.log('listingID:', listingID)
   const userID = req.session.user_id;
   const commentContent = req.body['new-comment'];
 
   commentsQueries.createNewComment(listingID, userID, commentContent)
-  commentsQueries.getCommentsById(listingID)
-  .then((data) => {
-    console.log('log in route', data)
-    res.send(data[data.length - 1]);
+  .then(() => {
+    commentsQueries.getCommentsById(listingID)
+    .then((data) => {
+      console.log('log in route', data)
+      res.send(data[data.length - 1]);
+    })
+    .catch((errorMessage) => res.send(errorMessage));
   })
-  .catch((errorMessage) => res.send(errorMessage));
 })
 
 

@@ -41,15 +41,13 @@ router.get('/favourites', (req, res) => {
   // Query for all users
   usersQueries.getAllUsers()
   .then(usersData => {
-    templateVars.users = usersData;
-  });
-
-
-  // Query for user's favourite listings
-  favouritesQueries.getFavouriteListings(userID)
-  .then((favListingsData) => {
-    templateVars.favourites = favListingsData;
-    res.render('favourites', templateVars);
+    favouritesQueries.getFavouriteListings(userID)
+    .then((favListingsData) => {
+      templateVars.users = usersData;
+      templateVars.favourites = favListingsData;
+      res.render('favourites', templateVars);
+    })
+    .catch((errorMessage) => res.send(errorMessage));
   })
   .catch((errorMessage) => res.send(errorMessage));
 });
@@ -61,43 +59,54 @@ router.get('/:id', (req, res) => {
   const listingID = req.params.id;
 
   let temp = {};
-
+  // Query for listing, comments, user
   usersQueries.getAllUsers()
   .then((UsersData) => {
-    temp.users = UsersData;
+    commentsQueries.getCommentsById(listingID)
+    .then((commentData) => {
+      listingsQueries.getListing(listingID)
+      .then((listingData) => {
+        favouritesQueries.getFavouriteListings(userID)
+        .then((favListingsData) => {
+        temp.users = UsersData;
+        temp.favourites = favListingsData;
+        temp.comments = commentData;
+        temp.listing = listingData;
+        res.render('listing', temp);
+        })
+        .catch((errorMessage) => res.send(errorMessage));
+      })
+      .catch((errorMessage) => res.send(errorMessage));
+    })
+    .catch((errorMessage) => res.send(errorMessage));
   })
+  .catch((errorMessage) => res.send(errorMessage));
+})
 
-  commentsQueries.getCommentsById(listingID)
-  .then((commentData) => {
-    temp.comments = commentData;
-  })
-
-  // Query for listing, comments
-  listingsQueries.getListing(listingID)
-  .then((listingData) => {
-    temp.listing = listingData;
-    res.render('listing', temp);
-  })
-  //.catch((errorMessage) => res.send(errorMessage));
-});
 
 
 // GET /listings
 router.get('/', (req, res) => {
+
+  const userID = req.session.user_id;
   let temp = {}
 
-  // Query for all users
+  // Query for all users,listings
   usersQueries.getAllUsers()
   .then((UsersData) => {
-    temp.users = UsersData;
-  });
-
-  // Query for all listings
-  listingsQueries.getAllListings(req.query)
-  .then((listingsData) => {
-    temp.listings = listingsData;
-
-    res.render('listings', temp);
+    listingsQueries.getAllListings(req.query)
+    .then((listingsData) => {
+      favouritesQueries.getFavouriteListings(userID)
+      .then((favListingsData) => {
+        console.log(favListingsData);
+        temp.favourites = favListingsData;
+        temp.users = UsersData;
+        temp.listings = listingsData;
+        res.render('listings', temp);
+      })
+      .catch((errorMessage) => res.send(errorMessage));
+    })
+    .catch((errorMessage) => res.send(errorMessage));
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

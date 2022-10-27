@@ -22,10 +22,6 @@
 
     <main class="container">
       <section class="main-section">
-        <section class="img">
-          <img src="<%= listing.photo_url %>">
-        </section>
-
         <section class="info">
           <div class="info-top">
             <header><%= listing.title %></header>
@@ -33,11 +29,14 @@
               <label class="ft">FEATURED</label>
             <% } %>
           </div>
+          <div class="img">
+            <img src="<%= listing.photo_url %>">
+          </div>
           <div class="info-bottom">
             <label class="user"><%= users[(listing.owner_id) - 1].name %></label>
-            <label class="desc"><%= listing.description %></label>
             <label class="price"><%= listing.price %> Gold Coins</label>
           </div>
+          <label class="desc"><%= listing.description %></label>
           <section class="comments">
             <header>Comments</header>
 
@@ -55,7 +54,7 @@
             <div class="new-comment">
               <form id="create-comment">
                 <textarea name="new-comment" id="new-comment" placeholder="What would you like to say?"></textarea>
-                <button type="submit">Submit</button>
+                <button type="submit" id="comment-button">Submit</button>
               </div>
             </form>
             </div>

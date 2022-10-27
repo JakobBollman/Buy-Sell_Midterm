@@ -119,7 +119,7 @@ const markListingSold = (id) => {
   SET sold_status = true
   WHERE id = $1 RETURNING *;`, [id])
   .then(data => {
-    return data;
+    return data.rows[0];
   })
   .catch(err => {
     return err.message;

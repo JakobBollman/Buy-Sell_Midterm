@@ -110,11 +110,15 @@ router.post('/:id', (req, res) => {
 
   // Capture listing, user and comment (verify <form name= >)
   const listingID = req.params.id;
+  console.log('listingID:', listingID)
   const userID = req.session.user_id;
-  const commentContent = req.body.comment;
+  const commentContent = req.body['new-comment'];
+  console.log('req.data:', req.data)
+  console.log('req.body:', req.body)
 
   commentsQueries.createNewComment(listingID, userID, commentContent)
   .then((postedComment) => {
+    console.log(postedComment)
     res.send(postedComment);
   })
   .catch((errorMessage) => res.send(errorMessage));

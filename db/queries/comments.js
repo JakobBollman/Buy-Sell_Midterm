@@ -14,7 +14,7 @@ const getCommentsById = (listingID) => {
 
 
 const createNewComment = (listingID, userID, comment) => {
-  const queryParams = [listingID, userID, comment]
+  const queryParams = [userID, listingID, comment]
   return db
   .query(`INSERT INTO comments (user_id, listing_id, content)
   VALUES ($1, $2, $3)
@@ -27,7 +27,7 @@ const createNewComment = (listingID, userID, comment) => {
   .catch(err => {
     return err.message;
   });
-  }
+}
 
 
 module.exports =

@@ -46,7 +46,7 @@
             <div class="comments-box">
               <% for(let item of comments) { %>
                 <div class="comment">
-                  <label class="user"><%= users[item.user_id - 1]?.name%></label>
+                  <label class="user"><%= users[item.user_id - 1].name%></label>
                   <label class="content"><%= item.content%></label>
                 </div>
               <% } %>

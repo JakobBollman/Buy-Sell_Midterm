@@ -62,31 +62,30 @@ router.get('/:id', (req, res) => {
 
   usersQueries.getAllUsers()
   .then((UsersData) => {
+
     temp.users = UsersData;
-  })
 
-  commentsQueries.getCommentsById(listingID)
-  .then((commentData) => {
-    temp.comments = commentData;
-  })
-
-  // Query for listing, comments
-  listingsQueries.getListing(listingID)
-  .then((listingData) => {
-    temp.listing = listingData;
-    res.render('listing', temp);
-  })
-  //.catch((errorMessage) => res.send(errorMessage));
+    commentsQueries.getCommentsById(listingID)
+    .then((commentData) => {
+      listingsQueries.getListing(listingID)
+      .then((listingData) => {
+        temp.users = UsersData;
+        temp.comments = commentData;
+        temp.listing = listingData;
+        res.render('listing', temp);
+      })
+      .catch((errorMessage) => res.send(errorMessage));
+    })
+    .catch((errorMessage) => res.send(errorMessage));
+  });
 });
 
 
 
 // GET /listings
 router.get('/', (req, res) => {
-
   const userID = req.session.user_id;
   let temp = {}
-
   // Query for all users,listings
   usersQueries.getAllUsers()
   .then((UsersData) => {

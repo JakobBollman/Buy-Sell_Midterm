@@ -1,0 +1,172 @@
+main.container {
+  display: flex;
+  height:auto;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(200,200,200);
+}
+
+section.item_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 3px solid black;
+  margin-top: 50px;
+  border-bottom: 3px solid black;
+  margin-bottom: 50px;
+}
+
+section.item_body header.my_header {
+  display: flex;
+  font-size: 64px;
+  font-family: 'Yellowtail','PT Sans Narrow';
+  margin-top: 0.5em;
+}
+
+section.item_body label.desc {
+  display: flex;
+  font-size: 16px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-bottom: 1em;
+}
+
+section.my_items {
+  display: flex;
+  flex-direction: column;
+}
+
+div.listing {
+  display: flex;
+  height: 350px;
+  width: 60vw;
+  border: 3px solid rgb(150,0,0);
+  background-color: rgb(150,0,0);
+  margin: 2em;
+  position: relative;
+  border-radius: 1em;
+}
+div.listing:hover {
+  box-shadow: 10px 10px 8px #888888;
+}
+
+div.listing img {
+  display: flex;
+  height: 350px;
+  width: 300px;
+  border-radius: 1em;
+}
+
+div.listing i{
+  display: flex;
+  color: white;
+  background-color: #888888;
+  padding: 3px;
+  border: 2px solid black;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+div.listing i.favourited{
+  color:#7a0606;
+}
+
+div.listing i:hover {
+  display: flex;
+  color: rgb(200,200,200);
+}
+
+div.listing div.listing_body{
+  display: flex;
+  height: 350px;
+  width: 700px;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.listing header.name{
+  display: flex;
+  font-size: 40px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  color: white;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 2px solid white;
+  margin: 0.5em;
+}
+
+div.listing div.item_info_top {
+  display: flex;
+  width: 500px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+div.listing label.username{
+  display: flex;
+  font-size: 24px;
+  font-family: 'Yellowtail','Sans-serif';
+  color: white;
+  text-align: center;
+}
+
+div.listing label.cost{
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  color: rgb(200,200,200);
+  text-align: center;
+}
+
+div.listing label.desclbl{
+  display: flex;
+  min-height: 150px;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  color: white;
+  text-align: center;
+  margin: 1em;
+  border: 1px solid white;
+  padding: 0.5em;
+  word-wrap: normal;
+  align-items: center;
+}
+
+div.listing div.buttons {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 24px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+div.buttons #mark-sold button{
+  display: flex;
+  width: 100px;
+  font-size: 18px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin: 10px;
+  border: 2px solid black;
+  background-color: #888888;
+  border-radius: 0.2em;
+}
+
+div.buttons #delete button {
+  display: flex;
+  width: 100px;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin: 10px;
+  border: 2px solid black;
+  background-color: red;
+  border-radius: 0.2em;
+}

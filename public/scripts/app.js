@@ -74,6 +74,7 @@ $(document).ready(() => {
       const newComment = newlyPostedComment;
       console.log('newComment', newComment)
       renderComments(newComment)
+      $('.empty').text("")
       $('textarea').val("").trigger("input")
     })
     .catch((err) => {

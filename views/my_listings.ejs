@@ -13,7 +13,7 @@
     <link href='https://fonts.googleapis.com/css?family=PT Sans Narrow' rel='stylesheet'>
 
     <!-- CSS CALLS -->
-    <link rel="stylesheet" href="../styles/listings_body.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/my_listings.css" type="text/css" />
 
   </head>
   <body>
@@ -22,27 +22,37 @@
     <main class="container">
 
       <section class="item_body">
-        <section>
-          <header>My Items</header>
+          <header class="my_header">My Items</header>
           <label class="desc">All The Items You Have For Sale!</label>
-          <div class="my_items">
+          <section class="my_items">
 
             <%  for(let item of myListings){  %>
+
               <div class="listing" id="<%= item.id %>">
                 <img src="<%= item.photo_url %>">
                 <i class="fa-solid fa-heart"></i>
-                <label class="name"><%= item.title %></label>
-                <div class="item_info">
-                  <label class="username"><%= item.name %></label>
-                  <label class="cost"><%= item.price %> Gold Coins</label>
+                <div class="listing_body">
+                  <header class="name"><%= item.title %></header>
+                  <div class="item_info_top">
+                    <label class="username"><%= item.name %></label>
+                    <label class="cost"><%= item.price %> Gold Coins</label>
+                  </div>
+                  <div class="desc">
+                    <label class="desclbl"><%= item.description %></label>
+                  </div>
                 </div>
+                <div class="buttons">
+                  <form id="mark-sold">
+                    <button type="submit">Mark As Sold</button>
+                  </form>
 
+                  <form id="delete">
+                    <button type="submit">Delete</button>
+                  </form>
+                </div>
               </div>
-              <article><%= item.description %></article>
             <%  } %>
-
-          </div>
-        </section>
+          </section>
       </section>
 
     </main>

@@ -94,14 +94,14 @@ $(document).ready(() => {
       url: `/listings/${listingID}/sold`
     })
     .then((soldListing) => {
-      $(this).closest('.listing').hide();
+      $(this).closest('.listing').append('<label class="sold-label">SOLD</label>');
     });
 
   })
 });
 
-//Helper functions below
 
+//Helper functions below
 
 
 //takes new comments and converts to safe text

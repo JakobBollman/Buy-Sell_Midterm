@@ -115,8 +115,8 @@ $(document).ready(() => {
   });
 });
 
-//Helper functions below
 
+//Helper functions below
 
 
 //takes new comments and converts to safe text

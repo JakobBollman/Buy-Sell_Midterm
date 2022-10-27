@@ -88,15 +88,14 @@ $(document).ready(() => {
     event.stopPropagation();
     // Capture listing ID
     const listingID = $(this).closest('.listing').attr('id');
-    console.log('listing id', listingID);
 
     $.ajax({
       method: 'PATCH',
       url: `/listings/${listingID}/sold`
     })
-    .then(() => {
-      $(`#${listingID}`).addClass('sold-label')
-    })
+    .then((soldListing) => {
+      $(this).closest('.listing').hide();
+    });
 
   })
 });

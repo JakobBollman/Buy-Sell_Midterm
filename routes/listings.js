@@ -100,7 +100,6 @@ router.get('/', (req, res) => {
     .then((listingsData) => {
       favouritesQueries.getFavouriteListings(userID)
       .then((favListingsData) => {
-        console.log(favListingsData);
         temp.favourites = favListingsData;
         temp.users = UsersData;
         temp.listings = listingsData;
@@ -119,16 +118,14 @@ router.post('/:id', (req, res) => {
 
   // Capture listing, user and comment
   const listingID = req.params.id;
-  console.log('listingID:', listingID)
   const userID = req.session.user_id;
   const commentContent = req.body['new-comment'];
 
   commentsQueries.createNewComment(listingID, userID, commentContent)
   .then(() => {
-    commentsQueries.getCommentsById(listingID)
+    return commentsQueries.getCommentsById(listingID);
   })
   .then((data) => {
-    console.log('log in route', data)
     res.send(data[data.length - 1]);
   })
   .catch((errorMessage) => res.send(errorMessage));

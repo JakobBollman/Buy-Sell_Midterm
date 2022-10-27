@@ -11,16 +11,16 @@ const commentsQueries = require('../db/queries/comments');
 
 
 // STRETCH Route to see a user's listings
-// router.get('/my_listings', (req, res) => {
+router.get('/my_listings', (req, res) => {
 
-//   // Query for all listings
-//   listingQueries.getListings(req.query)
-//   .then((listingsData) => {
+  // Query for all listings
+  listingQueries.getListings(req.query)
+  .then((listingsData) => {
 
-//     // Placeholder returning all listings
-//     res.render('my_listings',listingsData);
-//   });
-// });
+    // Placeholder returning all listings
+    res.render('my_listings',listingsData);
+  });
+});
 
 
 // GET /listings/new

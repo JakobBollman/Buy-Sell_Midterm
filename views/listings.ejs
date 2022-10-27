@@ -58,6 +58,9 @@
                 <%  if(item.featured === true){  %>
                   <div class="listing" id="<%= item.id %>">
                     <img src="<%= item.photo_url %>">
+                    <%  if(item.sold_status === true){  %>
+                      <label class="sold-label">SOLD</label>
+                    <%  } %>
                     <%  if(favourites > 0){  %>
                       <%  for(let fav of favourites){  %>
                         <%  if(item.id === fav.id){  %>
@@ -94,6 +97,9 @@
               <%  if(item.featured === false){  %>
                 <div class="listing" id="<%= item.id %>">
                   <img src="<%= item.photo_url %>">
+                  <%  if(item.sold_status === true){  %>
+                    <label class="sold-label">SOLD</label>
+                  <%  } %>
                   <%  if(favourites > 0){  %>
                     <%  for(let fav of favourites){  %>
                       <%  if(item.id === fav.id){  %>

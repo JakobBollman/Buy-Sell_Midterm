@@ -35,9 +35,9 @@
                   <div class="listing" id="<%= item.id %>">
                     <img src="<%= item.photo_url %>">
                     <i class="fa-solid fa-heart favourited"></i>
-                    <label class="username"><%= users[(item.owner_id) - 1].name %></label>
+                    <label class="name"><%= item.title %></label>
                     <div class="item_info">
-                      <label class="name"><%= item.title %></label>
+                      <label class="username"><%= users[(item.owner_id) - 1].name %></label>
                       <label class="cost"><%= item.price %> Gold Coins</label>
                     </div>
                   </div>

@@ -20,9 +20,76 @@ section.new-listing{
 
 section.new-listing header {
   display: flex;
-  font-size: 64px;
   font-family: 'Yellowtail','PT Sans Narrow';
   margin-top: 0.5em;
+}
+
+@media only screen and (min-width: 1200px) {
+  main.container {
+    margin-top: 200px;
+  }
+
+  section.new-listing header {
+    display: flex;
+    font-size: 64px;
+  }
+
+  section.new-listing button{
+    display: flex;
+    font-size: 32px;
+    width: 15vw;
+  }
+}
+
+@media only screen and (max-width: 1200px ) and (min-width: 1024px) {
+  main.container {
+    margin-top: 210px;
+  }
+
+  section.new-listing header {
+    display: flex;
+    font-size: 60px;
+  }
+
+  section.new-listing button{
+    display: flex;
+    font-size: 28px;
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 600px){
+  main.container {
+    margin-top: 270px;
+  }
+
+  section.new-listing header {
+    display: flex;
+    font-size: 56px;
+  }
+
+  section.new-listing button{
+    display: flex;
+    font-size: 28px;
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  main.container {
+    margin-top: 270px;
+  }
+
+  section.new-listing header {
+    display: flex;
+    font-size: 48px;
+  }
+
+  section.new-listing button{
+    display: flex;
+    font-size: 24px;
+    width: 25vw;
+  }
 }
 
 section.new-listing label.desc {
@@ -86,9 +153,7 @@ section.new-listing div.checkboxes label{
 
 section.new-listing button{
   display: flex;
-  font-size: 32px;
   height: 1.5em;
-  width: 15vw;
   font-family: 'PT Sans Narrow','Sans-serif';
   border: 2px solid black;
   margin: auto;

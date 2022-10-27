@@ -65,12 +65,27 @@ div.listing label.sold-label {
   width: 296px;
   height: 1.5em;
   position: absolute;
-  top: 40%;
+  top: 30%;
   font-size: 40px;
   font-family: 'PT Sans Narrow','Sans-serif';
   justify-content: center;
   align-items: center;
   background-color: red;
+  border: 2px solid black;
+  border-radius: 0.2em;
+}
+
+div.listing label.delete-label {
+  display: flex;
+  width: 296px;
+  height: 1.5em;
+  position: absolute;
+  top: 50%;
+  font-size: 40px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  justify-content: center;
+  align-items: center;
+  background-color: #888888;
   border: 2px solid black;
   border-radius: 0.2em;
 }
@@ -184,4 +199,9 @@ div.buttons #delete button {
   border: 2px solid black;
   background-color: red;
   border-radius: 0.2em;
+}
+
+div.buttons button:hover {
+  display: flex;
+  box-shadow: 5px 5px 5px rgb(100,0,0);
 }

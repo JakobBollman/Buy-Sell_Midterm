@@ -16,6 +16,7 @@ section.search_listings div.upper-search{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 section.search_listings i{
@@ -27,7 +28,7 @@ section.search_listings #search-text{
   display: flex;
   font-size: 24px;
   font-family: 'PT Sans Narrow','Sans-serif';
-  width: 500px;
+  width: 35vw;
   height: 1.5em;
   resize: none;
   border: 0 none;
@@ -45,9 +46,7 @@ section.search_listings div.bottom_search{
 
 section.search_listings #search-max{
   display: flex;
-  font-size: 24px;
   font-family: 'PT Sans Narrow','Sans-serif';
-  width: 100px;
   height: 1.5em;
   resize: none;
   border: 0 none;
@@ -59,9 +58,7 @@ section.search_listings #search-max{
 
 section.search_listings #search-min{
   display: flex;
-  font-size: 24px;
   font-family: 'PT Sans Narrow','Sans-serif';
-  width: 100px;
   height: 1.5em;
   resize: none;
   border: 0 none;
@@ -71,22 +68,80 @@ section.search_listings #search-min{
   margin: 0.5em 1.5em 0.5em 0.5em;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 section.search_listings div.checkboxes{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-section.search_listings div.checkboxes label{
-  display: flex;
-  font-size: 12px;
-  font-family: 'PT Sans Narrow','Sans-serif';
+@media only screen and (min-width: 1024px) {
+
+  section.search_listings #search-text{
+    display: flex;
+    width: 35vw;
+  }
+
+  section.search_listings #search-min{
+    display: flex;
+    font-size: 24px;
+    width: 10vw;
+  }
+
+  section.search_listings #search-max{
+    display: flex;
+    font-size: 24px;
+    width: 10vw;
+  }
+
+  section.search_listings div.checkboxes label{
+    display: flex;
+    font-size: 18px;
+    font-family: 'PT Sans Narrow','Sans-serif';
+  }
+
+  section.search_listings div.checkboxes{
+    display: flex;
+    margin-right: 0.5em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+  section.search_listings #search-text{
+    display: flex;
+    width: 50vw;
+  }
+
+  section.search_listings #search-min{
+    display: flex;
+    font-size: 18px;
+    width: 12vw;
+  }
+
+  section.search_listings #search-max{
+    display: flex;
+    font-size: 18px;
+    width: 12vw;
+  }
+
+  section.search_listings div.checkboxes label{
+    display: flex;
+    font-size: 12px;
+    font-family: 'PT Sans Narrow','Sans-serif';
+  }
+
+  section.search_listings div.checkboxes{
+    display: flex;
+    margin-right: 1em;
+  }
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 section.search_listings button{

@@ -2,25 +2,11 @@ nav{
   display: flex;
   top: 0;
   left: 0;
-  height: 200px;
   width: 100vw;
   background-image: url('/images/Red-Background.png');
   justify-content: space-between;
   position: fixed;
   z-index:1;
-}
-
-nav img {
-  display: flex;
-  width: 8em;
-  height: 8em;
-  margin-top: 2em;
-  margin-left: 2em;
-}
-
-nav div.img_div {
-  display: flex;
-  width: 300px;
 }
 
 nav div.navMiddle{
@@ -32,19 +18,12 @@ nav div.navMiddle{
 
 nav div.topMid{
   display: flex;
-  flex-direction: row;
-  width: 60vw;
   justify-content: space-evenly;
-  font-size: 24px;
 }
 
 nav div.topMid button{
   display: flex;
   font-family: 'PT Sans Narrow','Sans-serif';
-  font-size: 24px;
-  padding-right: 2em;
-  padding-left: 2em;
-  margin-top: 1em;
   border: none;
   border-right: 2px solid black;
   border-left: 2px solid black;
@@ -56,23 +35,223 @@ nav div.topMid button:hover{
   color: rgb(85,85,85);
 }
 
-nav div.title {
-  display: flex;
+@media only screen and (min-width: 1200px) {
 
+  nav {
+    display: flex;
+    height: 200px;
+  }
+
+  nav div.topMid{
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+  }
+
+  nav div.topMid button{
+    font-size: 24px;
+    padding-right: 2em;
+    padding-left: 2em;
+    margin-top: 1em;
+  }
+
+  nav div.title {
+    display: flex;
+    width: 100vw;
+  }
+
+  nav div.title button {
+    display: flex;
+    font-size: 80px;
+    font-family: 'Yellowtail','PT Sans Narrow';
+    background-color: transparent;
+    border: none;
+    position:absolute;
+    top:30%;
+    left:35%;
+    border-bottom: 4px solid black;
+  }
+
+  nav div.buttons{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+  }
+
+  nav img {
+    display: flex;
+    width: 8em;
+    height: 8em;
+    margin-top: 2em;
+    margin-left: 2em;
+  }
+
+  nav div.img_div {
+    display: flex;
+    width: 300px;
+  }
 }
 
-nav div.title button {
-  display: flex;
-  font-size: 80px;
-  font-family: 'Yellowtail','PT Sans Narrow';
-  background-color: transparent;
-  border: none;
-  border-bottom: 4px solid black;
+@media only screen and (max-width: 1200px ) and (min-width: 1024px) {
+
+  nav {
+    display: flex;
+    height: 210px;
+  }
+
+  nav div.topMid{
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+  }
+
+  nav div.topMid button{
+    font-size: 20px;
+    padding-right: 1em;
+    padding-left: 1em;
+    margin-top: 0.5em;
+  }
+
+  nav div.title {
+    display: flex;
+    width: 100vw;
+  }
+
+  nav div.title button {
+    display: flex;
+    font-size: 60px;
+    font-family: 'Yellowtail','PT Sans Narrow';
+    background-color: transparent;
+    border: none;
+    position:absolute;
+    top:30%;
+    left:30%;
+    border-bottom: 4px solid black;
+  }
+
+  nav div.buttons{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    margin: 1em;
+  }
+
+  nav img {
+    display: flex;
+    width: 6em;
+    height: 6em;
+    margin-top: 1.5em;
+    margin-left: 1.5em;
+  }
+
+  nav div.img_div {
+    display: flex;
+    width: 150px;
+  }
 }
 
-nav div.buttons{
-  display: flex;
-  width: 300px;
+@media only screen and (max-width: 1024px) and (min-width: 600px){
+
+  nav {
+    display: flex;
+    height: 270px;
+  }
+
+  nav div.topMid{
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    margin-top: 1em;
+    flex-wrap: wrap;
+  }
+
+  nav div.title {
+    display: flex;
+    width: 100vw;
+  }
+
+  nav div.topMid button{
+    font-size: 18px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+
+  nav div.title button {
+    display: flex;
+    font-size: 52px;
+    font-family: 'Yellowtail','PT Sans Narrow';
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top:40%;
+    left:20%;
+    border-bottom: 4px solid black;
+  }
+
+  nav img {
+    display: flex;
+    width: 4em;
+    height: 4em;
+    margin-top: 1em;
+    margin-left: 1em;
+  }
+
+  nav div.img_div {
+    display: flex;
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+
+  nav {
+    display: flex;
+    height: 270px;
+  }
+
+  nav div.topMid{
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    margin-top: 1em;
+    flex-wrap: wrap;
+  }
+
+  nav div.title {
+    display: flex;
+    width: 100vw;
+  }
+
+  nav div.topMid button{
+    font-size: 18px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+
+  nav div.title button {
+    display: flex;
+    font-size: 48px;
+    font-family: 'Yellowtail','PT Sans Narrow';
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top:40%;
+    left:12%;
+    border-bottom: 4px solid black;
+  }
+
+  nav img {
+    display: flex;
+    width: 4em;
+    height: 4em;
+    margin-top: 1em;
+    margin-left: 1em;
+  }
+
+  nav div.img_div {
+    display: flex;
+    width: 100px;
+  }
 }
 
 nav div.buttons button {

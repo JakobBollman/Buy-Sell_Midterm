@@ -50,6 +50,12 @@
       <form class="register" action="/users/register" method="GET">
         <button type="submit">Register</button>
       </form>
+
+      <%  if(user){  %>
+        <form class="logout" action="/users/logout" method="GET">
+          <button type="submit">Logout</button>
+        </form>
+      <%  } %>
   </div>
 
   </nav>

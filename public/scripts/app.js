@@ -103,6 +103,7 @@ $(document).ready(() => {
   const $deleteButton = $('.mark-delete');
   $deleteButton.on('click', function(event) {
     event.stopPropagation();
+
     const listingID = $(this).closest('.listing').attr('id');
 
     $.ajax({
@@ -112,6 +113,7 @@ $(document).ready(() => {
     .then((deletedListing) => {
       $(this).closest('.listing').append('<label class="delete-label">DELETED</label>');
     });
+    
   });
 });
 

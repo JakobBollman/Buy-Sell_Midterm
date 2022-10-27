@@ -18,13 +18,10 @@ router.get('/my_listings', (req, res) => {
   // Query for all listings
   listingsQueries.getMyListings(userID)
   .then((listingsData) => {
-    favouritesQueries.getFavouriteListings(userID)
-    .then((favListingsData) => {
-      templateVars.myListings = listingsData
-      templateVars.favourites = favListingsData
-      res.render('my_listings',templateVars);
-    })
-    .catch(errorMessage => res.send(errorMessage));
+    templateVars.myListings = listingsData
+    templateVars.user = userID
+    res.render('my_listings',templateVars);
+
   })
   .catch(errorMessage => res.send(errorMessage));
 });
@@ -32,8 +29,9 @@ router.get('/my_listings', (req, res) => {
 
 // GET /listings/new
 router.get('/new', (req, res) => {
-
-  res.render('new_listing');
+  const userID = req.session.user_id;
+  templateVars = {user : userID}
+  res.render('new_listing', templateVars);
 });
 
 
@@ -52,6 +50,7 @@ router.get('/favourites', (req, res) => {
     .then((favListingsData) => {
       templateVars.users = usersData;
       templateVars.favourites = favListingsData;
+      templateVars.user = userID;
       res.render('favourites', templateVars);
     })
     .catch((errorMessage) => res.send(errorMessage));
@@ -64,13 +63,14 @@ router.get('/favourites', (req, res) => {
 router.get('/:id', (req, res) => {
   // Capture listing id
   const listingID = req.params.id;
-
+  const userID = req.session.user_id;
   let temp = {};
 
   usersQueries.getAllUsers()
   .then((UsersData) => {
 
     temp.users = UsersData;
+    temp.user = userID;
 
     commentsQueries.getCommentsById(listingID)
     .then((commentData) => {
@@ -93,24 +93,23 @@ router.get('/:id', (req, res) => {
 router.get('/', (req, res) => {
   const userID = req.session.user_id;
   let temp = {}
-  // Query for all users,listings
+
+  // Three functions here get us query data that was difficult/impossible to join, and passes it to EJS
   usersQueries.getAllUsers()
   .then((UsersData) => {
     listingsQueries.getAllListings(req.query)
     .then((listingsData) => {
       favouritesQueries.getFavouriteListings(userID)
       .then((favListingsData) => {
-        console.log(favListingsData);
         temp.favourites = favListingsData;
         temp.users = UsersData;
         temp.listings = listingsData;
+        temp.user = userID;
         res.render('listings', temp);
       })
       .catch((errorMessage) => res.send(errorMessage));
     })
-    .catch((errorMessage) => res.send(errorMessage));
   })
-  .catch((errorMessage) => res.send(errorMessage));
 });
 
 
@@ -120,16 +119,14 @@ router.post('/:id', (req, res) => {
 
   // Capture listing, user and comment
   const listingID = req.params.id;
-  console.log('listingID:', listingID)
   const userID = req.session.user_id;
   const commentContent = req.body['new-comment'];
 
   commentsQueries.createNewComment(listingID, userID, commentContent)
   .then(() => {
-    commentsQueries.getCommentsById(listingID)
+    return commentsQueries.getCommentsById(listingID);
   })
   .then((data) => {
-    console.log('log in route', data)
     res.send(data[data.length - 1]);
   })
   .catch((errorMessage) => res.send(errorMessage));

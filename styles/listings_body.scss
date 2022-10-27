@@ -101,6 +101,7 @@ section.item_body div.listing {
   align-items: center;
   background-color: rgb(150, 0, 0);
   margin: 1em;
+  border-radius: 1em;
 }
 
 section.item_body div.listing:hover {
@@ -112,6 +113,7 @@ section.item_body img {
   height: 350px;
   width: 300px;
   margin-bottom: 4em;
+  border-radius: 1em;
 }
 
 section.item_body div.item_info {

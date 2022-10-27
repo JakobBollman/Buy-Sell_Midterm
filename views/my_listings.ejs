@@ -35,6 +35,9 @@
                 <%  if(item.sold_status){  %>
                   <label class="sold-label">SOLD</label>
                 <%  } %>
+                <%  if(item.active_status === 'deleted'){  %>
+                  <label class="delete-label">DELETED</label>
+                <%  } %>
                 <i class="fa-solid fa-heart"></i>
                 <div class="listing_body">
                   <header class="name"><%= item.title %></header>

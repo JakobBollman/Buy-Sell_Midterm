@@ -25,22 +25,22 @@
         <label class="desc">Make A Listing To Sell To People Near You!</label>
 
         <section class="listing-info" id="listing-info">
-          <form id="create-listing">
-              <textarea name="listing-title" id="listing-title" placeholder="Title"></textarea>
-              <textarea name="listing-desc" id="listing-desc" placeholder="Description"></textarea>
+          <form id="create-listing" action="/listings" method="POST">
+              <textarea name="title" id="listing-title" placeholder="Title"></textarea>
+              <textarea name="description" id="listing-desc" placeholder="Description"></textarea>
 
-              <input type="number" name="listing-price" id="listing-price" placeholder="Price"></textarea>
-              <textarea name="listing-img-url" id="listing-img-url" placeholder="URL"></textarea>
+              <input type="number" name="price" id="listing-price" placeholder="Price"></textarea>
+              <textarea name="photo_url" id="listing-img-url" placeholder="Picture URL"></textarea>
 
-              <div class="checkboxes">
+              <div class="radio-buttons">
                 <label for="listing-is-farming">
-                  <input type="checkbox" id="listing-is-farming" />Farming</label>
+                  <input type="radio" name="category" id="listing-is-farming" value="Farming" />Farming</label>
                 <label for="listing-is-lighting">
-                  <input type="checkbox" id="listing-is-lighting" />Lighting</label>
+                  <input type="radio" name="category" id="listing-is-lighting" value="Lighting" />Lighting</label>
                 <label for="listing-is-food">
-                  <input type="checkbox" id="listing-is-food" />Food</label>
+                  <input type="radio" name="category" id="listing-is-food" value="Food" />Food</label>
                 <label for="listing-is-misc">
-                  <input type="checkbox" id="listing-is-misc" />Misc.</label>
+                  <input type="radio" name="category" id="listing-is-misc" value="Misc" />Misc.</label>
               </div>
               <button type="submit">Submit</button>
             </div>

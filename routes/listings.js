@@ -178,7 +178,7 @@ router.post('/', (req, res) => {
   .then((createdListing) => {
 
     // Placeholder returning newly created listing
-    res.send(createdListing);
+    res.redirect('listings/my_listings');
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

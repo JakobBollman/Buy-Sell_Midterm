@@ -94,10 +94,25 @@ $(document).ready(() => {
       url: `/listings/${listingID}/sold`
     })
     .then((soldListing) => {
-      $(this).closest('.listing').hide();
+      $(this).closest('.listing').append('<label class="sold-label">SOLD</label>');
     });
 
   })
+
+  //mark listing deleted
+  const $deleteButton = $('.mark-delete');
+  $deleteButton.on('click', function(event) {
+    event.stopPropagation();
+    const listingID = $(this).closest('.listing').attr('id');
+
+    $.ajax({
+      method: 'DELETE',
+      url: `/listings/${listingID}`
+    })
+    .then((deletedListing) => {
+      $(this).closest('.listing').append('<label class="delete-label">DELETED</label>');
+    });
+  });
 });
 
 //Helper functions below

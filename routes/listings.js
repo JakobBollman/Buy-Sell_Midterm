@@ -110,7 +110,6 @@ router.get('/', (req, res) => {
 
 
 // POST /listings/:id (post comment)
-// To be integrated to comments queries (TS working on)
 
 router.post('/:id', (req, res) => {
 
@@ -123,12 +122,12 @@ router.post('/:id', (req, res) => {
   commentsQueries.createNewComment(listingID, userID, commentContent)
   .then(() => {
     commentsQueries.getCommentsById(listingID)
-    .then((data) => {
-      console.log('log in route', data)
-      res.send(data[data.length - 1]);
-    })
-    .catch((errorMessage) => res.send(errorMessage));
   })
+  .then((data) => {
+    console.log('log in route', data)
+    res.send(data[data.length - 1]);
+  })
+  .catch((errorMessage) => res.send(errorMessage));
 })
 
 
@@ -208,8 +207,7 @@ router.delete('/:id', (req, res) => {
   // Query to mark listing as deleted
   listingsQueries.deleteListing(listingID)
   .then(data => {
-    // Placeholder
-    res.redirect('/listings');
+    res.json(data);
   })
   .catch((errorMessage) => res.send(errorMessage));
 });

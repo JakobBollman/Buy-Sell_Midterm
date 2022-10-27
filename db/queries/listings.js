@@ -117,7 +117,7 @@ const getMyListings = (userID) => {
 const markListingSold = (id) => {
   return db.query(`UPDATE listings
   SET sold_status = true
-  WHERE id = $1;`, [id])
+  WHERE id = $1 RETURNING *;`, [id])
   .then(data => {
     return data.rows[0];
   })
@@ -131,8 +131,8 @@ const deleteListing = (id) => {
   return db.query(`UPDATE listings
   SET active_status='deleted'
   WHERE id = $1 RETURNING *;`, [id])
-  .then(data => {
-    return data;
+  .then(deletedListing => {
+    return deletedListing.rows[0];
   })
   .catch(err => {
     return err.message;

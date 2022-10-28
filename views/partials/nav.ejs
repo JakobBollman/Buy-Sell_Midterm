@@ -43,16 +43,18 @@
     </div>
 
     <div class="buttons">
-      <form class="login" action="/users/login" method="GET">
-        <button type="submit">Login</button>
-      </form>
+      <%  if(!user){  %>
+        <form class="login" action="/users/login" method="GET">
+          <button type="submit">Login</button>
+        </form>
 
-      <form class="register" action="/users/register" method="GET">
-        <button type="submit">Register</button>
-      </form>
+        <form class="register" action="/users/register" method="GET">
+          <button type="submit">Register</button>
+        </form>
 
-      <%  if(user){  %>
-        <form class="logout" action="/users/logout" method="GET">
+      <% } else if(user){  %>
+        <label class="signed">Signed In</label>
+        <form class="logout" action="/logout" method="GET">
           <button type="submit">Logout</button>
         </form>
       <%  } %>

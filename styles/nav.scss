@@ -72,11 +72,14 @@ nav div.topMid button:hover{
     border-bottom: 4px solid black;
   }
 
+
+
   nav div.buttons{
     display: flex;
     flex-direction: row;
     width: 300px;
   }
+
 
   nav img {
     display: flex;
@@ -265,6 +268,19 @@ nav div.buttons button {
   border: none;
   background-color: rgb(160,160,160);
   border-radius: 0.2em;
+}
+
+nav div.buttons label.signed {
+  display: flex;
+  font-size: 24px;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-top: 1em;
+  margin-right: 1em;
+  padding: 0 0.5em 0 0.5em;
+  border: 2px solid black;
+  border-radius: 0.2em;
+  height: 1.5em;
+
 }
 
 nav div.buttons button:hover {

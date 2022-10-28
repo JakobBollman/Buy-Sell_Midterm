@@ -10,19 +10,19 @@ const usersQueries = require('../db/queries/users');
 const commentsQueries = require('../db/queries/comments');
 
 
-// STRETCH Route to see a user's listings
 router.get('/my_listings', (req, res) => {
   const templateVars = {}
   const userID = req.session.user_id;
 
-  // Query for all listings
   listingsQueries.getMyListings(userID)
+
   .then((listingsData) => {
     templateVars.myListings = listingsData
     templateVars.user = userID
     res.render('my_listings',templateVars);
 
   })
+
   .catch(errorMessage => res.send(errorMessage));
 });
 
@@ -113,6 +113,7 @@ router.get('/', (req, res) => {
 });
 
 
+
 // POST /listings/:id (post comment)
 
 router.post('/:id', (req, res) => {
@@ -125,6 +126,7 @@ router.post('/:id', (req, res) => {
   commentsQueries.createNewComment(listingID, userID, commentContent)
   .then(() => {
     return commentsQueries.getCommentsById(listingID);
+
   })
   .then((data) => {
     res.send(data[data.length - 1]);
@@ -200,7 +202,6 @@ router.patch('/:id/sold', (req, res) => {
   .catch(errorMessage => res.send(errorMessage));
 });
 
-
 // DELETE /listings/:id (status deleted)
 router.delete('/:id', (req, res) => {
 
@@ -214,6 +215,7 @@ router.delete('/:id', (req, res) => {
   })
   .catch((errorMessage) => res.send(errorMessage));
 });
+
 
 
 module.exports = router;

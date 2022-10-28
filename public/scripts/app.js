@@ -57,22 +57,21 @@ $(document).ready(() => {
     }
   });
 
-  //grabs new comment form
+
+  // Listener on comment form
   const $form = $('#create-comment')
   $form.on('submit', (event) => {
     event.preventDefault();
     const newCommentData = $form.serialize();
 
-    //sends post to listings/:id with comment text to be added to db
+    // sends post to listings/:id with comment text to be added to db
     $.ajax({
       method: 'POST',
       url: window.location.pathname,
       data: newCommentData
     })
-
     .then((newlyPostedComment) => {
       const newComment = newlyPostedComment;
-      console.log('newComment', newComment)
       renderComments(newComment)
       $('.empty').text("")
       $('textarea').val("").trigger("input")
@@ -85,8 +84,8 @@ $(document).ready(() => {
   //mark listing sold
   const $soldButton = $('.mark-sold')
   $soldButton.on('click', function(event) {
+
     event.stopPropagation();
-    // Capture listing ID
     const listingID = $(this).closest('.listing').attr('id');
 
     $.ajax({
@@ -96,14 +95,13 @@ $(document).ready(() => {
     .then((soldListing) => {
       $(this).closest('.listing').append('<label class="sold-label">SOLD</label>');
     });
-
   })
 
   //mark listing deleted
   const $deleteButton = $('.mark-delete');
   $deleteButton.on('click', function(event) {
-    event.stopPropagation();
 
+    event.stopPropagation();
     const listingID = $(this).closest('.listing').attr('id');
 
     $.ajax({
@@ -113,8 +111,11 @@ $(document).ready(() => {
     .then((deletedListing) => {
       $(this).closest('.listing').append('<label class="delete-label">DELETED</label>');
     });
-    
+
   });
+
+
+
 });
 
 
@@ -130,7 +131,6 @@ const safeText = function (str) {
 
 //takes safe text and converts to HTML element
 const createCommentElement = function (data) {
-  console.log('data:', data)
   const commentBody = safeText(data.content);
   const result =
   `  <div class="comment">

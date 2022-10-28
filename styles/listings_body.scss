@@ -9,6 +9,30 @@ main.container {
   background-color: rgb(200,200,200);
 }
 
+@media only screen and (min-width: 1200px) {
+  main.container {
+    margin-top: 200px;
+  }
+}
+
+@media only screen and (max-width: 1200px ) and (min-width: 1024px) {
+  main.container {
+    margin-top: 210px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 600px){
+  main.container {
+    margin-top: 270px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  main.container {
+    margin-top: 270px;
+  }
+}
+
 section.item_body {
   display: flex;
   flex-direction: column;

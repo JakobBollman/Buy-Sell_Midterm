@@ -9,6 +9,114 @@ main.container {
   flex-direction: column;
 }
 
+@media only screen and (min-width: 1200px) {
+  main.container {
+    margin-top: 200px;
+  }
+  section.info img{
+    display: flex;
+    height: 500px;
+    width: 500px;
+  }
+  section.info div.info-bottom {
+    display: flex;
+    width: 500px;
+  }
+  section.comments div.comment{
+    display: flex;
+    width: 30vw;
+  }
+  section.comments #new-comment{
+    display: flex;
+    width: 30vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 1200px ) and (min-width: 1024px) {
+  main.container {
+    margin-top: 210px;
+  }
+  section.info img{
+    display: flex;
+    height: 500px;
+    width: 500px;
+  }
+  section.info div.info-bottom {
+    display: flex;
+    width: 500px;
+  }
+  section.comments div.comment{
+    display: flex;
+    width: 40vw;
+  }
+  section.comments #new-comment{
+    display: flex;
+    width: 40vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 600px){
+  main.container {
+    margin-top: 270px;
+  }
+  section.info img{
+    display: flex;
+    height: 500px;
+    width: 500px;
+  }
+  section.info div.info-bottom {
+    display: flex;
+    width: 450px;
+  }
+  section.comments div.comment{
+    display: flex;
+    width: 50vw;
+  }
+  section.comments #new-comment{
+    display: flex;
+    width: 50vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 50px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  main.container {
+    margin-top: 270px;
+  }
+  section.info img{
+    display: flex;
+    height: 400px;
+    width: 400px;
+  }
+  section.info div.info-bottom {
+    display: flex;
+    width: 400px;
+  }
+  section.comments div.comment{
+    display: flex;
+    width: 50vw;
+  }
+  section.comments #new-comment{
+    display: flex;
+    width: 50vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 50px;
+  }
+}
+
 section.main-section {
   display: flex;
   flex-direction: column;
@@ -40,14 +148,8 @@ label.ft {
   background-color: #888888;
   font-size: 32px;
   position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-section.info img{
-  display: flex;
-  height: 500px;
-  width: 500px;
+  top: 10px;
+  right: 0px;
 }
 
 section.info div.info-top {
@@ -58,7 +160,6 @@ section.info div.info-top {
 
 section.info div.info-bottom {
   display: flex;
-  width: 500px;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
@@ -73,7 +174,7 @@ section.info label.user {
 
 section.info label.desc {
   display: flex;
-  width: 750px;
+  width: 50vw;
   min-height: 100px;
   font-size: 28px;
   font-family: 'PT Sans Narrow','Sans-serif';
@@ -116,7 +217,6 @@ section.comments .empty{
 section.comments div.comment{
   display: flex;
   height: auto;
-  width: 500px;
   flex-direction: column;
   font-family: 'PT Sans Narrow','Sans-serif';
   font-size: 24px;
@@ -149,7 +249,6 @@ section.comments #new-comment{
   display: flex;
   font-size: 18px;
   font-family: 'PT Sans Narrow','Sans-serif';
-  width: 400px;
   height: 1.5em;
   resize: none;
   border: 0 none;
@@ -163,7 +262,6 @@ section.comments #comment-button{
   display: flex;
   font-size: 18px;
   font-family: 'PT Sans Narrow','Sans-serif';
-  width: 100px;
   height: 1.5em;
   background-color: #888888;
   border: none;

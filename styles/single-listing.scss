@@ -24,11 +24,15 @@ main.container {
   }
   section.comments div.comment{
     display: flex;
-    width: 400px;
+    width: 30vw;
   }
   section.comments #new-comment{
     display: flex;
-    width: 400px;
+    width: 30vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 100px;
   }
 }
 
@@ -47,11 +51,15 @@ main.container {
   }
   section.comments div.comment{
     display: flex;
-    width: 400px;
+    width: 40vw;
   }
   section.comments #new-comment{
     display: flex;
-    width: 400px;
+    width: 40vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 100px;
   }
 }
 
@@ -70,11 +78,15 @@ main.container {
   }
   section.comments div.comment{
     display: flex;
-    width: 350px;
+    width: 50vw;
   }
   section.comments #new-comment{
     display: flex;
-    width: 350px;
+    width: 50vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 50px;
   }
 }
 
@@ -93,11 +105,15 @@ main.container {
   }
   section.comments div.comment{
     display: flex;
-    width: 300px;
+    width: 50vw;
   }
   section.comments #new-comment{
     display: flex;
-    width: 300px;
+    width: 50vw;
+  }
+  section.comments #comment-button{
+    display: flex;
+    width: 50px;
   }
 }
 
@@ -246,7 +262,6 @@ section.comments #comment-button{
   display: flex;
   font-size: 18px;
   font-family: 'PT Sans Narrow','Sans-serif';
-  width: 100px;
   height: 1.5em;
   background-color: #888888;
   border: none;

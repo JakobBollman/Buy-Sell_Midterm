@@ -73,7 +73,7 @@ $(document).ready(() => {
     .then((newlyPostedComment) => {
       renderComments(newlyPostedComment)
       $('.empty').text("")
-      $('textarea').val("").trigger("input")
+      $('textarea').val("")
     })
     .catch((err) => {
       console.log("jquery", err)

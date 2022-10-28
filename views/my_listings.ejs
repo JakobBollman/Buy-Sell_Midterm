@@ -38,7 +38,18 @@
                 <%  if(item.active_status === 'deleted'){  %>
                   <label class="delete-label">DELETED</label>
                 <%  } %>
-                <i class="fa-solid fa-heart"></i>
+                <%  if(favourites.length > 0){  %>
+                  <%  for(let fav of favourites){  %>
+                    <%  if(item.id === fav.id){  %>
+                      <i class="fa-solid fa-heart favourited"></i>
+                      <%  break; %>
+                    <%  } else { %>
+                      <i class="fa-solid fa-heart"></i>
+                    <%  } %>
+                  <%  } %>
+                <%  } else { %>
+                  <i class="fa-solid fa-heart"></i>
+                <%  } %>
                 <div class="listing_body">
                   <header class="name"><%= item.title %></header>
                   <div class="item_info_top">

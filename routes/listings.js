@@ -17,12 +17,15 @@ router.get('/my_listings', (req, res) => {
   listingsQueries.getMyListings(userID)
 
   .then((listingsData) => {
-    templateVars.myListings = listingsData
-    templateVars.user = userID
-    res.render('my_listings',templateVars);
-
+    favouritesQueries.getFavouriteListings(userID)
+    .then((favListingsData) => {
+      templateVars.myListings = listingsData
+      templateVars.favourites = favListingsData
+      templateVars.user = userID
+      res.render('my_listings',templateVars);
+    })
+    .catch(errorMessage => res.send(errorMessage));
   })
-
   .catch(errorMessage => res.send(errorMessage));
 });
 

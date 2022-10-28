@@ -69,7 +69,6 @@ router.get('/:id', (req, res) => {
   usersQueries.getAllUsers()
   .then((UsersData) => {
 
-    temp.users = UsersData;
     temp.user = userID;
 
     commentsQueries.getCommentsById(listingID)

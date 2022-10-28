@@ -18,4 +18,9 @@ router.get('/register', (req, res) => {
 });
 
 
+router.get("/logout", (req, res) => {
+  req.session = null; //clears the secret cookies
+  res.redirect("/listings");
+});
+
 module.exports = router;

@@ -8,6 +8,22 @@ $(document).ready(() => {
     window.location.href = `/listings/${listingId}`;
   });
 
+  $('.fa-heart').hover(
+    function() {
+      if ($(this).hasClass('favourited')) {
+        $(this).css("color",'#888888');
+      } else {
+        $(this).css("color",'red');
+      }
+    }, function() {
+      if ($(this).hasClass('favourited')) {
+        $(this).css("color",'rgb(150,0,0)');
+      } else {
+          $(this).css("color",'rgb(200,200,200)');
+      }
+    }
+  );
+
 
   // Listener on heart icon to add/remove from favourites
   $('.fa-heart').on('click', function(event) {
@@ -57,36 +73,34 @@ $(document).ready(() => {
     }
   });
 
-  //grabs new comment form
+
+  // Listener on comment form
   const $form = $('#create-comment')
   $form.on('submit', (event) => {
     event.preventDefault();
     const newCommentData = $form.serialize();
 
-    //sends post to listings/:id with comment text to be added to db
+    // sends post to listings/:id with comment text to be added to db
     $.ajax({
       method: 'POST',
       url: window.location.pathname,
       data: newCommentData
     })
-
     .then((newlyPostedComment) => {
-      const newComment = newlyPostedComment;
-      console.log('newComment', newComment)
-      renderComments(newComment)
+      renderComments(newlyPostedComment)
       $('.empty').text("")
-      $('textarea').val("").trigger("input")
+      $('textarea').val("")
     })
     .catch((err) => {
-      console.log(err)
+      console.log("jquery", err)
     })
   })
 
   //mark listing sold
   const $soldButton = $('.mark-sold')
   $soldButton.on('click', function(event) {
+
     event.stopPropagation();
-    // Capture listing ID
     const listingID = $(this).closest('.listing').attr('id');
 
     $.ajax({
@@ -96,14 +110,13 @@ $(document).ready(() => {
     .then((soldListing) => {
       $(this).closest('.listing').append('<label class="sold-label">SOLD</label>');
     });
-
   })
 
   //mark listing deleted
   const $deleteButton = $('.mark-delete');
   $deleteButton.on('click', function(event) {
-    event.stopPropagation();
 
+    event.stopPropagation();
     const listingID = $(this).closest('.listing').attr('id');
 
     $.ajax({
@@ -113,8 +126,11 @@ $(document).ready(() => {
     .then((deletedListing) => {
       $(this).closest('.listing').append('<label class="delete-label">DELETED</label>');
     });
-    
+
   });
+
+
+
 });
 
 
@@ -130,7 +146,6 @@ const safeText = function (str) {
 
 //takes safe text and converts to HTML element
 const createCommentElement = function (data) {
-  console.log('data:', data)
   const commentBody = safeText(data.content);
   const result =
   `  <div class="comment">

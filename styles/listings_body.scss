@@ -68,10 +68,10 @@ section.item_body label.sold-label{
 
 section.item_body i{
   display: flex;
-  color: white;
-  background-color: #888888;
+  color: silver;
+  // background-color: #888888;
   padding: 3px;
-  border: 2px solid black;
+  // border: 2px solid black;
   font-size: 24px;
   position: absolute;
   top: 10px;
@@ -84,7 +84,7 @@ section.item_body i.favourited{
 
 section.item_body i:hover {
   display: flex;
-  color: rgb(200,200,200);
+  color: rgb(212, 212, 212);
 }
 
 section.item_body header {

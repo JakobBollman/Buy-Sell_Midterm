@@ -71,13 +71,12 @@ $(document).ready(() => {
       data: newCommentData
     })
     .then((newlyPostedComment) => {
-      const newComment = newlyPostedComment;
-      renderComments(newComment)
+      renderComments(newlyPostedComment)
       $('.empty').text("")
       $('textarea').val("").trigger("input")
     })
     .catch((err) => {
-      console.log(err)
+      console.log("jquery", err)
     })
   })
 

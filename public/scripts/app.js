@@ -8,6 +8,22 @@ $(document).ready(() => {
     window.location.href = `/listings/${listingId}`;
   });
 
+  $('.fa-heart').hover(
+    function() {
+      if ($(this).hasClass('favourited')) {
+        $(this).css("color",'#888888');
+      } else {
+        $(this).css("color",'red');
+      }
+    }, function() {
+      if ($(this).hasClass('favourited')) {
+        $(this).css("color",'rgb(150,0,0)');
+      } else {
+          $(this).css("color",'rgb(200,200,200)');
+      }
+    }
+  );
+
 
   // Listener on heart icon to add/remove from favourites
   $('.fa-heart').on('click', function(event) {

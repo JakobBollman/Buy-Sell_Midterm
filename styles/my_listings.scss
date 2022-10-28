@@ -93,7 +93,7 @@ div.listing label.delete-label {
 
 div.listing i{
   display: flex;
-  color: silver;
+  color: rgb(200,200,200);
   // background-color: #888888;
   padding: 3px;
   // border: 2px solid black;
@@ -104,7 +104,7 @@ div.listing i{
 }
 
 div.listing i.favourited{
-  color:#7a0606;
+  color:rgb(150,0,0);
 }
 
 div.listing i:hover {

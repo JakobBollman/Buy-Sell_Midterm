@@ -43,6 +43,7 @@ div.listing {
   display: flex;
   height: 350px;
   width: 60vw;
+  min-width: 300px;
   border: 3px solid rgb(150,0,0);
   background-color: rgb(150,0,0);
   margin: 2em;
@@ -121,7 +122,7 @@ div.listing div.listing_body{
 
 div.listing header.name{
   display: flex;
-  font-size: 40px;
+  font-size: 2vw;
   font-family: 'PT Sans Narrow','Sans-serif';
   color: white;
   text-align: center;
@@ -132,7 +133,7 @@ div.listing header.name{
 
 div.listing div.item_info_top {
   display: flex;
-  width: 500px;
+  width: 20vw;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -140,7 +141,7 @@ div.listing div.item_info_top {
 
 div.listing label.username{
   display: flex;
-  font-size: 24px;
+  font-size: 1.6vw;
   font-family: 'Yellowtail','Sans-serif';
   color: white;
   text-align: center;
@@ -148,7 +149,7 @@ div.listing label.username{
 
 div.listing label.cost{
   display: flex;
-  font-size: 24px;
+  font-size: 1.6vw;
   font-family: 'PT Sans Narrow','Sans-serif';
   color: rgb(200,200,200);
   text-align: center;
@@ -157,7 +158,7 @@ div.listing label.cost{
 div.listing label.desclbl{
   display: flex;
   min-height: 150px;
-  font-size: 24px;
+  font-size: 1.5vw;
   font-family: 'PT Sans Narrow','Sans-serif';
   color: white;
   text-align: center;

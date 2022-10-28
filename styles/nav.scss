@@ -72,11 +72,14 @@ nav div.topMid button:hover{
     border-bottom: 4px solid black;
   }
 
+
+
   nav div.buttons{
     display: flex;
     flex-direction: row;
     width: 300px;
   }
+
 
   nav img {
     display: flex;
@@ -89,6 +92,11 @@ nav div.topMid button:hover{
   nav div.img_div {
     display: flex;
     width: 300px;
+  }
+
+  nav div.buttons label.signed {
+    display: flex;
+    font-size: 24px;
   }
 }
 
@@ -148,6 +156,11 @@ nav div.topMid button:hover{
     display: flex;
     width: 150px;
   }
+
+  nav div.buttons label.signed {
+    display: flex;
+    font-size: 18px;
+  }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 600px){
@@ -184,7 +197,7 @@ nav div.topMid button:hover{
     border: none;
     position: absolute;
     top:40%;
-    left:20%;
+    left:30%;
     border-bottom: 4px solid black;
   }
 
@@ -199,6 +212,11 @@ nav div.topMid button:hover{
   nav div.img_div {
     display: flex;
     width: 100px;
+  }
+
+  nav div.buttons label.signed {
+    display: flex;
+    font-size: 20px;
   }
 }
 
@@ -252,6 +270,11 @@ nav div.topMid button:hover{
     display: flex;
     width: 100px;
   }
+
+  nav div.buttons label.signed {
+    display: flex;
+    font-size: 18px;
+  }
 }
 
 nav div.buttons button {
@@ -265,6 +288,18 @@ nav div.buttons button {
   border: none;
   background-color: rgb(160,160,160);
   border-radius: 0.2em;
+}
+
+nav div.buttons label.signed {
+  display: flex;
+  font-family: 'PT Sans Narrow','Sans-serif';
+  margin-top: 1em;
+  margin-right: 1em;
+  padding: 0 0.5em 0 0.5em;
+  border: 2px solid black;
+  border-radius: 0.2em;
+  height: 1.5em;
+  justify-content: center;
 }
 
 nav div.buttons button:hover {
